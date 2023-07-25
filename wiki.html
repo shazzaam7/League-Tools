@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LoL Wiki</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main>
+      <div id="champion-select">
+        <select id="champion-select">
+          <option value="">Choose a Champion</option>
+        </select>
+      </div>
+      <div id="champion-info">
+        <div id="champion-loading">
+          <img id="champion-loading" src="" />
+        </div>
+        <h2 id="champion-name">
+          <span id="champion-name"></span>
+          <span id="champion-title"></span>
+        </h2>
+        <div id="champion-stats">
+          <div id="base-stats-header">
+            <p>Base Stats</p>
+          </div>
+          <div id="base-stats">
+            <div class="column1">
+              <p>HEALTH</p>
+              <p id="health"></p>
+            </div>
+            <div class="column2">
+              <p id="resource-type">RESOURCE</p>
+              <p id="resource"></p>
+            </div>
+          </div>
+          <div id="base-stats">
+            <div class="column1">
+              <p>HEATLH REGEN.</p>
+              <p id="healthregen"></p>
+            </div>
+            <div class="column2">
+              <p>RESOURCE REGEN.</p>
+              <p id="resourceregen"></p>
+            </div>
+          </div>
+          <div id="base-stats">
+            <div class="column1">
+              <p>ARMOR</p>
+              <p id="armor"></p>
+            </div>
+            <div class="column2">
+              <p>ATTACK DAMAGE</p>
+              <p id="attackdamage"></p>
+            </div>
+          </div>
+          <div id="base-stats">
+            <div class="column1">
+              <p>MAGIC RESIST</p>
+              <p id="magicresist"></p>
+            </div>
+            <div class="column2">
+              <p>CRIT. DAMAGE</p>
+              <p id="critdamage"></p>
+            </div>
+          </div>
+          <div id="base-stats">
+            <div class="column1">
+              <p>MOVEMENT SPEED</p>
+              <p id="movementspeed"></p>
+            </div>
+            <div class="column2">
+              <p>ATTACK RANGE</p>
+              <p id="attackrange"></p>
+            </div>
+          </div>
+          <div id="base-stats-header">
+            <p>Attack Speed</p>
+          </div>
+          <div id="base-stats">
+            <div class="column1">
+              <p>BASE AS</p>
+              <p id="baseattackspeed"></p>
+            </div>
+            <div class="column2">
+              <p>Attack Windup</p>
+              <p id="attackwindup">N/A</p>
+            </div>
+          </div>
+          <div id="base-stats">
+            <div class="column1">
+              <p>AS RATIO</p>
+              <p id="attackspeedratio"></p>
+            </div>
+            <div class="column2">
+              <p>BONUS AS</p>
+              <p id="bonusas"></p>
+            </div>
+          </div>
+          <div id="base-stats-header">
+            <p>Unit Radius</p>
+          </div>
+          <div id="base-stats">
+            <div class="column1">
+              <p>GAMEPLAY RADIUS</p>
+              <p id="gameplayradius"></p>
+            </div>
+            <div class="column2">
+              <p>SELECTION RADIUS</p>
+              <p id="selectionradius"></p>
+            </div>
+          </div>
+          <div id="base-stats">
+            <div class="column1">
+              <p>PATHING RADIUS</p>
+              <p id="pathingradius"></p>
+            </div>
+            <div class="column2">
+              <p>ACQUISITION RADIUS</p>
+              <p id="acqradius"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="champion-spells">
+        <h2><p>Abilities</p></h2>
+        <hr />
+        <div id="champion-passive">
+          <div>
+            <h3><p id="passive-name" class="ability-name">Passive:</p></h3>
+          </div>
+          <div>
+            <div>
+              <div id="passive" class="ability">
+                <img id="passive-icon" src="" hidden />
+                <div id="passive-effect" class="ability-effect"></div>
+              </div>
+              <br />
+              <div id="passive-notes" class="notes" hidden>
+                <div class="buttons">
+                  <button id="passive-tab-hide">Hide</button>
+                  <button id="passive-tab-details">Details</button>
+                </div>
+                <div id="passive-details" class="details" hidden>
+                  <br />
+                  <h3><p>Details:</p></h3>
+                  <p id="passive-notes"></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div></div>
+        </div>
+        <hr />
+        <div id="championQ">
+          <div>
+            <h3><p id="q-name" class="ability-name">Q:</p></h3>
+          </div>
+          <div>
+            <div id="qability" class="ability">
+              <img id="q-icon" src="" hidden />
+              <div id="q-effect" class="ability-effect"></div>
+            </div>
+            <br />
+            <div id="q-notes" class="notes" hidden>
+              <div class="buttons">
+                <button id="q-tab-hide">Hide</button>
+                <button id="q-tab-details">Details</button>
+              </div>
+              <div id="q-details" class="details" hidden>
+                <br />
+                <h3><p>Details:</p></h3>
+                <p id="q-notes"></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr />
+        <div id="championW">
+          <div>
+            <h3><p id="w-name" class="ability-name">W:</p></h3>
+          </div>
+          <div>
+            <div id="wability" class="ability">
+              <img id="w-icon" src="" hidden />
+              <div id="w-effect" class="ability-effect"></div>
+            </div>
+            <br />
+            <div id="w-notes" class="notes" hidden>
+              <div class="buttons">
+                <button id="w-tab-hide">Hide</button>
+                <button id="w-tab-details">Details</button>
+              </div>
+              <div id="w-details" class="details" hidden>
+                <br />
+                <h3><p>Details:</p></h3>
+                <p id="w-notes"></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr />
+        <div id="championE">
+          <div>
+            <h3><p id="e-name" class="ability-name">E:</p></h3>
+          </div>
+          <div>
+            <div id="eability" class="ability">
+              <img id="e-icon" src="" hidden />
+              <div id="e-effect" class="ability-effect"></div>
+            </div>
+            <br />
+            <div id="e-notes" class="notes" hidden>
+              <div class="buttons">
+                <button id="e-tab-hide">Hide</button>
+                <button id="e-tab-details">Details</button>
+              </div>
+              <div id="e-details" class="details" hidden>
+                <br />
+                <h3><p>Details:</p></h3>
+                <p id="e-notes"></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr />
+        <div id="championR">
+          <div>
+            <h3><p id="r-name" class="ability-name">R:</p></h3>
+          </div>
+          <div>
+            <div id="rability" class="ability">
+              <img id="r-icon" src="" hidden />
+              <div id="r-effect" class="ability-effect"></div>
+            </div>
+            <br />
+            <div id="r-notes" class="notes" hidden>
+              <div class="buttons">
+                <button id="r-tab-hide">Hide</button>
+                <button id="r-tab-details">Details</button>
+              </div>
+              <div id="r-details" class="details" hidden>
+                <br />
+                <h3><p>Details:</p></h3>
+                <p id="r-notes"></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script src="wiki.js"></script>
+  </body>
+</html>

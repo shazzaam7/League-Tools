@@ -1,0 +1,180 @@
+body {
+  min-width: 85%;
+  max-width: 900px;
+  min-height: 100vh;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+main {
+  display: grid;
+  grid-template-areas:
+    "select select select"
+    "info spells spells"
+    "info calculation calculation";
+  grid-template-columns: 30% 70%;
+}
+
+div#champion-select {
+  grid-area: select;
+  border: 2px black solid;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+div#champion-select > select {
+  max-width: 100px;
+  justify-self: center;
+  margin-bottom: 10px;
+}
+
+div#champion-info {
+  grid-area: info;
+  border: 2px black solid;
+}
+
+div#champion-loading {
+  display: flex;
+  justify-content: center;
+  background-color: black;
+}
+
+img#champion-loading {
+  width: 60%;
+  height: 40%;
+  align-self: center;
+}
+
+h2#champion-name {
+  border: 2px black solid;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+
+#champion-name > span {
+  align-self: center;
+  overflow: visible;
+  text-align: center;
+}
+
+div#champion-stats {
+  display: flex;
+  flex-direction: column;
+  grid-area: stats;
+  border: 2px gold solid;
+}
+
+div#base-stats-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+div#base-stats {
+  display: grid;
+  grid-template-areas: "health resource";
+  grid-template-columns: 50% 50%;
+}
+
+div.column1 {
+  border: 2px black solid;
+  grid-area: health;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+div.column1 > p {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  overflow: hidden;
+  text-align: center;
+}
+
+div.column2 {
+  grid-area: resource;
+  border: 2px black solid;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+div.column2 > p {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  overflow: hidden;
+  text-align: center;
+}
+
+div#champion-spells {
+  grid-area: spells;
+  border: 2px black solid;
+}
+
+div#champion-spells > h2 {
+  text-align: center;
+}
+
+p.ability-name {
+  margin-left: 10px;
+}
+
+div.ability {
+  display: flex;
+  flex-direction: row;
+}
+
+div.ability > img {
+  width: 70px;
+  height: 70px;
+  max-width: 70px;
+  max-height: 70px;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+div#effect {
+  margin-right: 20px;
+}
+
+div#passive-effect {
+  overflow: hidden;
+}
+
+div#passive-effect > span {
+  color: blue;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+div.buttons {
+  margin-left: 10px;
+}
+
+div.notes {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+div.notes > button {
+  background-color: #f1f1f1;
+  border: 2px solid black;
+  border-radius: 20%;
+  padding: 10px 10px;
+  cursor: pointer;
+}
+
+div.notes > button:hover {
+  background-color: #ddd;
+}
+
+div#championR {
+  margin-bottom: 10px;
+}
