@@ -22,13 +22,13 @@ function grabAllChampions() {
     fetch(`https://shazzaam7.github.io/LoL-DDragon/champions.json`)
         .then(res => res.json())
         .then(data => {
-            console.log(data);
             for (let key in data) {
                 let newChampion = document.createElement("option");
                 newChampion.value = key;
                 newChampion.innerText = data[key].name;
                 ChampionSelect.appendChild(newChampion);
             }
+            document.getElementById('loading-screen').style.display = 'none';
         }).catch(error => console.log(error))
 }
 
@@ -77,99 +77,218 @@ function fillBaseStats() {
 }
 
 function fillAbilities() {
-    console.log(currentChampion.abilities);
     // Passive
-    document.querySelector("p#passive-name").innerText = "Passive: " + currentChampion.abilities.P[0].name;
-    document.querySelector("div#passive-effect").innerHTML = "";
-    document.querySelector("img#passive-icon").removeAttribute("hidden");
-    document.querySelector("img#passive-icon").setAttribute("show", "");
-    document.querySelector("img#passive-icon").src = currentChampion.abilities.P[0].icon;
-    currentChampion.abilities.P[0].effects.forEach(effect => {
-        let newItem = document.createElement('div');
-        newItem.id = "passive-effect";
-        newItem.innerText = effect.description;
-        document.querySelector("div#passive-effect").appendChild(newItem);
-    })
-    styleText(document.querySelectorAll("div#passive-effect"));
-    if (currentChampion.abilities.P[0].notes != "No additional details.") {
-        document.querySelector("div#passive-notes").removeAttribute("hidden");
-        document.querySelector("p#passive-notes").innerText = currentChampion.abilities.P[0].notes;
-    } else {
-        document.querySelector("div#passive-notes").setAttribute("hidden", "");
-        document.querySelector("p#passive-notes").innerText = "";
+    for (let index = currentChampion.abilities.P.length; index < 6; index++) {
+        document.querySelector(`div#champion-passive${index + 1}`).removeAttribute("show");
+        document.querySelector(`div#champion-passive${index + 1}`).setAttribute("hidden", "");
+    }
+    for (let index = 0; index < currentChampion.abilities.P.length; index++) {
+        document.querySelector(`div#champion-passive${index + 1}`).removeAttribute("hidden");
+        document.querySelector(`div#champion-passive${index + 1}`).setAttribute("show", "");
+        document.querySelector(`p#passive-name${index + 1}`).innerText = currentChampion.abilities.P[index].name;
+        document.querySelector(`div#passive-effect${index + 1}`).innerHTML = "";
+        document.querySelector(`img#passive-icon${index + 1}`).removeAttribute("hidden");
+        document.querySelector(`img#passive-icon${index + 1}`).setAttribute("show", "");
+        document.querySelector(`img#passive-icon${index + 1}`).src = currentChampion.abilities.P[index].icon;
+        currentChampion.abilities.P[index].effects.forEach(effect => {
+            let newItem = document.createElement('div');
+            newItem.id = "passive-effect";
+            newItem.innerText = effect.description;
+            document.querySelector(`div#passive-effect${index + 1}`).appendChild(newItem);
+        })
+        stylePassive(document.querySelectorAll(`div#passive-effect${index + 1}`));
+        if (currentChampion.abilities.P[index].notes != "No additional details.") {
+            document.querySelector(`div#passive-notes${index + 1}`).removeAttribute("hidden");
+            document.querySelector(`p#passive-notes${index + 1}`).innerText = currentChampion.abilities.P[index].notes;
+        } else {
+            document.querySelector(`div#passive-notes${index + 1}`).setAttribute("hidden", "");
+            document.querySelector(`p#passive-notes${index + 1}`).innerText = "";
+        }
+        document.getElementById(`passive-tab-hide${index + 1}`).addEventListener("click", () => {
+            document.getElementById(`passive-details${index + 1}`).removeAttribute("show");
+            document.getElementById(`passive-details${index + 1}`).setAttribute("hidden", "");
+        });
+        document.getElementById(`passive-tab-details${index + 1}`).addEventListener("click", () => {
+            document.getElementById(`passive-details${index + 1}`).removeAttribute("hidden");
+            document.getElementById(`passive-details${index + 1}`).setAttribute("show", "");
+        })
     }
     // Q
+    for (let index = currentChampion.abilities.Q.length; index < 6; index++) {
+        document.querySelector(`div#championQ${index + 1}`).removeAttribute("show");
+        document.querySelector(`div#championQ${index + 1}`).setAttribute("hidden", "");
+    }
+    for (let index = 0; index < currentChampion.abilities.Q.length; index++) {
+        document.querySelector(`div#championQ${index + 1}`).removeAttribute("hidden");
+        document.querySelector(`div#championQ${index + 1}`).setAttribute("show", "");
+        document.querySelector(`p#q${index + 1}-name`).innerText = currentChampion.abilities.Q[index].name;
+        document.querySelector(`div#q${index + 1}-effect`).innerHTML = "";
+        document.querySelector(`img#q${index + 1}-icon`).removeAttribute("hidden");
+        document.querySelector(`img#q${index + 1}-icon`).setAttribute("show", "");
+        document.querySelector(`img#q${index + 1}-icon`).src = currentChampion.abilities.Q[index].icon;
+        currentChampion.abilities.Q[index].effects.forEach(effect => {
+            let newItem = document.createElement('div');
+            newItem.id = "passive-effect";
+            newItem.innerText = effect.description;
+            document.querySelector(`div#q${index + 1}-effect`).appendChild(newItem);
+        })
+        styleAbilities(document.querySelectorAll(`div#q${index + 1}-effect`));
+        if (currentChampion.abilities.Q[index].notes != "No additional details.") {
+            document.querySelector(`div#q${index + 1}-notes`).removeAttribute("hidden");
+            document.querySelector(`p#q${index + 1}-notes`).innerText = currentChampion.abilities.Q[index].notes;
+        } else {
+            document.querySelector(`div#q${index + 1}-notes`).setAttribute("hidden", "");
+            document.querySelector(`p#q${index + 1}-notes`).innerText = "";
+        }
+        document.getElementById(`q${index + 1}-tab-hide`).addEventListener("click", () => {
+            document.getElementById(`q${index + 1}-details`).removeAttribute("show");
+            document.getElementById(`q${index + 1}-details`).setAttribute("hidden", "");
+        });
+
+        document.getElementById(`q${index + 1}-tab-details`).addEventListener("click", () => {
+            document.getElementById(`q${index + 1}-details`).removeAttribute("hidden");
+            document.getElementById(`q${index + 1}-details`).setAttribute("show", "");
+        })
+    }
+    // W
+    for (let index = currentChampion.abilities.W.length; index < 2; index++) {
+        document.querySelector(`div#championW${index + 1}`).removeAttribute("show");
+        document.querySelector(`div#championW${index + 1}`).setAttribute("hidden", "");
+    }
+    for (let index = 0; index < currentChampion.abilities.W.length; index++) {
+        document.querySelector(`div#championW${index + 1}`).removeAttribute("hidden");
+        document.querySelector(`div#championW${index + 1}`).setAttribute("show", "");
+        document.querySelector(`p#w${index + 1}-name`).innerText = currentChampion.abilities.W[index].name;
+        document.querySelector(`div#w${index + 1}-effect`).innerHTML = "";
+        document.querySelector(`img#w${index + 1}-icon`).removeAttribute("hidden");
+        document.querySelector(`img#w${index + 1}-icon`).setAttribute("show", "");
+        document.querySelector(`img#w${index + 1}-icon`).src = currentChampion.abilities.W[index].icon;
+        currentChampion.abilities.W[index].effects.forEach(effect => {
+            let newItem = document.createElement('div');
+            newItem.id = "passive-effect";
+            newItem.innerText = effect.description;
+            document.querySelector(`div#w${index + 1}-effect`).appendChild(newItem);
+        })
+        styleAbilities(document.querySelectorAll(`div#w${index + 1}-effect`));
+        if (currentChampion.abilities.W[index].notes != "No additional details.") {
+            document.querySelector(`div#w${index + 1}-notes`).removeAttribute("hidden");
+            document.querySelector(`p#w${index + 1}-notes`).innerText = currentChampion.abilities.W[index].notes;
+        } else {
+            document.querySelector(`div#w${index + 1}-notes`).setAttribute("hidden", "");
+            document.querySelector(`p#w${index + 1}-notes`).innerText = "";
+        }
+        document.getElementById(`w${index + 1}-tab-hide`).addEventListener("click", () => {
+            document.getElementById(`w${index + 1}-details`).removeAttribute("show");
+            document.getElementById(`w${index + 1}-details`).setAttribute("hidden", "");
+        });
+
+        document.getElementById(`w${index + 1}-tab-details`).addEventListener("click", () => {
+            document.getElementById(`w${index + 1}-details`).removeAttribute("hidden");
+            document.getElementById(`w${index + 1}-details`).setAttribute("show", "");
+        })
+    }
+    // E
+    for (let index = currentChampion.abilities.E.length; index < 2; index++) {
+        document.querySelector(`div#championE${index + 1}`).removeAttribute("show");
+        document.querySelector(`div#championE${index + 1}`).setAttribute("hidden", "");
+    }
+    for (let index = 0; index < currentChampion.abilities.E.length; index++) {
+        document.querySelector(`div#championE${index + 1}`).removeAttribute("hidden");
+        document.querySelector(`div#championE${index + 1}`).setAttribute("show", "");
+        document.querySelector(`p#e${index + 1}-name`).innerText = currentChampion.abilities.E[index].name;
+        document.querySelector(`div#e${index + 1}-effect`).innerHTML = "";
+        document.querySelector(`img#e${index + 1}-icon`).removeAttribute("hidden");
+        document.querySelector(`img#e${index + 1}-icon`).setAttribute("show", "");
+        document.querySelector(`img#e${index + 1}-icon`).src = currentChampion.abilities.E[index].icon;
+        currentChampion.abilities.E[index].effects.forEach(effect => {
+            let newItem = document.createElement('div');
+            newItem.id = "passive-effect";
+            newItem.innerText = effect.description;
+            document.querySelector(`div#e${index + 1}-effect`).appendChild(newItem);
+        })
+        styleAbilities(document.querySelectorAll(`div#e${index + 1}-effect`));
+        if (currentChampion.abilities.E[index].notes != "No additional details.") {
+            document.querySelector(`div#e${index + 1}-notes`).removeAttribute("hidden");
+            document.querySelector(`p#e${index + 1}-notes`).innerText = currentChampion.abilities.E[index].notes;
+        } else {
+            document.querySelector(`div#e${index + 1}-notes`).setAttribute("hidden", "");
+            document.querySelector(`p#e${index + 1}-notes`).innerText = "";
+        }
+        document.getElementById(`e${index + 1}-tab-hide`).addEventListener("click", () => {
+            document.getElementById(`e${index + 1}-details`).removeAttribute("show");
+            document.getElementById(`e${index + 1}-details`).setAttribute("hidden", "");
+        });
+
+        document.getElementById(`e${index + 1}-tab-details`).addEventListener("click", () => {
+            document.getElementById(`e${index + 1}-details`).removeAttribute("hidden");
+            document.getElementById(`e${index + 1}-details`).setAttribute("show", "");
+        })
+    }
+    // R
+    for (let index = currentChampion.abilities.R.length; index < 2; index++) {
+        document.querySelector(`div#championR${index + 1}`).removeAttribute("show");
+        document.querySelector(`div#championR${index + 1}`).setAttribute("hidden", "");
+    }
+    for (let index = 0; index < currentChampion.abilities.R.length; index++) {
+        document.querySelector(`div#championR${index + 1}`).removeAttribute("hidden");
+        document.querySelector(`div#championR${index + 1}`).setAttribute("show", "");
+        document.querySelector(`p#r${index + 1}-name`).innerText = currentChampion.abilities.R[index].name;
+        document.querySelector(`div#r${index + 1}-effect`).innerHTML = "";
+        document.querySelector(`img#r${index + 1}-icon`).removeAttribute("hidden");
+        document.querySelector(`img#r${index + 1}-icon`).setAttribute("show", "");
+        document.querySelector(`img#r${index + 1}-icon`).src = currentChampion.abilities.R[index].icon;
+        currentChampion.abilities.R[index].effects.forEach(effect => {
+            let newItem = document.createElement('div');
+            newItem.id = "passive-effect";
+            newItem.innerText = effect.description;
+            document.querySelector(`div#r${index + 1}-effect`).appendChild(newItem);
+        })
+        styleAbilities(document.querySelectorAll(`div#r${index + 1}-effect`));
+        if (currentChampion.abilities.R[index].notes != "No additional details.") {
+            document.querySelector(`div#r${index + 1}-notes`).removeAttribute("hidden");
+            document.querySelector(`p#r${index + 1}-notes`).innerText = currentChampion.abilities.R[index].notes;
+        } else {
+            document.querySelector(`div#r${index + 1}-notes`).setAttribute("hidden", "");
+            document.querySelector(`p#r${index + 1}-notes`).innerText = "";
+        }
+        document.getElementById(`r${index + 1}-tab-hide`).addEventListener("click", () => {
+            document.getElementById(`r${index + 1}-details`).removeAttribute("show");
+            document.getElementById(`r${index + 1}-details`).setAttribute("hidden", "");
+        });
+
+        document.getElementById(`r${index + 1}-tab-details`).addEventListener("click", () => {
+            document.getElementById(`r${index + 1}-details`).removeAttribute("hidden");
+            document.getElementById(`r${index + 1}-details`).setAttribute("show", "");
+        })
+    }
+    document.getElementById('loading-screen').style.display = 'none';
 }
 
-function styleText(element) {
+function stylePassive(element) {
     element.forEach(p => {
-        let lines = p.textContent.split('\n');
-        lines.forEach((line, index) => {
-            const colonIndex = line.indexOf(':');
-            if (colonIndex !== -1) {
-                const styledText = `<span>${line.substring(0, colonIndex + 1)}</span>${line.substring(colonIndex + 1)}`;
-                lines[index] = styledText;
-            }
-        });
-        p.innerHTML = lines.join('<br>');
+        let text = p.textContent;
+        const regex = /Innate(?:\s*-\s*[\w\s]+)?\s*:/g;
+        const modifiedContent = text.replace(regex, '\n$&');
+        p.innerHTML = modifiedContent.replace(regex,
+            '<br><span class="innate-text">$&</span>');
+    })
+}
+
+function styleAbilities(element) {
+    element.forEach(p => {
+        let text = p.textContent;
+        const regex = /(Active(?:\s*-\s*[\w\s]+)?\s*:|Passive(?:\s*-\s*[\w\s]+)?\s*:)/g;
+        const modifiedContent = text.replace(regex, '\n$&');
+        p.innerHTML = modifiedContent.replace(regex,
+            '<br><span class="innate-text">$&</span>');
     })
 }
 
 ChampionSelect.addEventListener("change", (event) => {
     if (ChampionSelect.selectedIndex > 0) {
+        document.getElementById('loading-screen').style.display = 'flex';
         grabChampionDetails(event.target.value)
     }
 });
-
-document.getElementById("passive-tab-hide").addEventListener("click", () => {
-    document.getElementById("passive-details").removeAttribute("show");
-    document.getElementById("passive-details").setAttribute("hidden", "");
-});
-
-document.getElementById("passive-tab-details").addEventListener("click", () => {
-    document.getElementById("passive-details").removeAttribute("hidden");
-    document.getElementById("passive-details").setAttribute("show", "");
-})
-
-document.getElementById("q-tab-hide").addEventListener("click", () => {
-    document.getElementById("q-details").removeAttribute("show");
-    document.getElementById("q-details").setAttribute("hidden", "");
-});
-
-document.getElementById("q-tab-details").addEventListener("click", () => {
-    document.getElementById("q-details").removeAttribute("hidden");
-    document.getElementById("q-details").setAttribute("show", "");
-})
-
-document.getElementById("w-tab-hide").addEventListener("click", () => {
-    document.getElementById("w-details").removeAttribute("show");
-    document.getElementById("w-details").setAttribute("hidden", "");
-});
-
-document.getElementById("w-tab-details").addEventListener("click", () => {
-    document.getElementById("w-details").removeAttribute("hidden");
-    document.getElementById("w-details").setAttribute("show", "");
-})
-
-document.getElementById("e-tab-hide").addEventListener("click", () => {
-    document.getElementById("e-details").removeAttribute("show");
-    document.getElementById("e-details").setAttribute("hidden", "");
-});
-
-document.getElementById("e-tab-details").addEventListener("click", () => {
-    document.getElementById("e-details").removeAttribute("hidden");
-    document.getElementById("e-details").setAttribute("show", "");
-})
-
-document.getElementById("r-tab-hide").addEventListener("click", () => {
-    document.getElementById("r-details").removeAttribute("show");
-    document.getElementById("r-details").setAttribute("hidden", "");
-});
-
-document.getElementById("r-tab-details").addEventListener("click", () => {
-    document.getElementById("r-details").removeAttribute("hidden");
-    document.getElementById("r-details").setAttribute("show", "");
-})
-
 
 grabLatestVersion();

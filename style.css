@@ -6,6 +6,45 @@ body {
   margin-right: auto;
 }
 
+#loading-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  z-index: 9999;
+}
+
+.loader {
+  border: 5px solid #f3f3f3;
+  border-top: 5px solid #3498db;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+#loading-screen > p {
+  color: #fff;
+  font-size: 20px;
+  margin-top: 20px;
+}
+
 main {
   display: grid;
   grid-template-areas:
@@ -141,14 +180,15 @@ div#effect {
   margin-right: 20px;
 }
 
-div#passive-effect {
+div.ability-effect {
   overflow: hidden;
 }
 
-div#passive-effect > span {
+div.ability-effect > span {
   color: blue;
   font-weight: bold;
   font-size: 18px;
+  margin-top: 10px;
 }
 
 div.buttons {
@@ -175,6 +215,6 @@ div.notes > button:hover {
   background-color: #ddd;
 }
 
-div#championR {
+div.R {
   margin-bottom: 10px;
 }
