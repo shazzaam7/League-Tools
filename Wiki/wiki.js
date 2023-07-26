@@ -96,7 +96,7 @@ function fillAbilities() {
             newItem.innerText = effect.description;
             document.querySelector(`div#passive-effect${index + 1}`).appendChild(newItem);
         })
-        stylePassive(document.querySelectorAll(`div#passive-effect${index + 1}`));
+        styleAbilities(document.querySelectorAll(`div#passive-effect${index + 1}`));
         if (currentChampion.abilities.P[index].notes != "No additional details.") {
             document.querySelector(`div#passive-notes${index + 1}`).removeAttribute("hidden");
             document.querySelector(`p#passive-notes${index + 1}`).innerText = currentChampion.abilities.P[index].notes;
@@ -265,26 +265,26 @@ function fillAbilities() {
     document.querySelector("div#champion-info-spells").style.display = "grid";
 }
 
-function stylePassive(element) {
-    element.forEach(p => {
-        let text = p.textContent;
-        const regex = /Innate(?:\s*-\s*[\w\s]+)?\s*:/g;
-        const modifiedContent = text.replace(regex, '\n$&');
-        p.innerHTML = modifiedContent.replace(regex,
-            '<br><span class="innate-text">$&</span>');
-    })
-}
-
 function styleAbilities(element) {
     element.forEach(p => {
         let text = p.textContent;
-        const regex = /(Active(?:\s*-\s*[\w\s]+)?\s*:|Passive(?:\s*-\s*[\w\s]+)?\s*:)/g;
+        const regex = /(Innate(?:\s*-\s*[\w\s]+)?\s*:|Active(?:\s*-\s*[\w\s]+)?\s*:|Passive(?:\s*-\s*[\w\s]+)?\s*:|Recast(?:\s*-\s*[\w\s]+)?\s*:|Toggle(?:\s*-\s*[\w\s]+)?\s*:)/g;
         const modifiedContent = text.replace(regex, '\n$&');
         p.innerHTML = modifiedContent.replace(regex,
             '<br><span class="innate-text">$&</span>');
     })
 }
-
+/*
+function styleAbilities(element) {
+    element.forEach(p => {
+        let text = p.textContent;
+        const regex = /(Active(?:\s*-\s*[\w\s]+)?\s*:|Passive(?:\s*-\s*[\w\s]+)?\s*:|Recast(?:\s*-\s*[\w\s]+)?\s*:|Toggle(?:\s*-\s*[\w\s]+)?\s*:)/g;
+        const modifiedContent = text.replace(regex, '\n$&');
+        p.innerHTML = modifiedContent.replace(regex,
+            '<br><span class="innate-text">$&</span>');
+    })
+}
+*/
 document.querySelector("div#champion-info-spells").style.display = "none";
 
 ChampionSelect.addEventListener("change", (event) => {
