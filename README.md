@@ -2,4 +2,5 @@
 A LoL Wiki using Meraki's lolstaticdata.
 
 # Credits
-[Merkai for lolstaticdata](https://github.com/meraki-analytics/lolstaticdata)
+[Meraki for lolstaticdata](https://github.com/meraki-analytics/lolstaticdata)
+[League of Legends Wiki for the data](https://leagueoflegends.fandom.com/wiki/League_of_Legends_Wiki)
