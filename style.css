@@ -48,14 +48,11 @@ body {
 main {
   display: grid;
   grid-template-areas:
-    "select select select"
-    "info spells spells"
-    "info calculation calculation";
-  grid-template-columns: 30% 70%;
+    "select"
+    "infospells";
 }
 
 div#champion-select {
-  grid-area: select;
   border: 2px black solid;
   display: flex;
   justify-content: center;
@@ -64,9 +61,15 @@ div#champion-select {
 }
 
 div#champion-select > select {
-  max-width: 100px;
+  max-width: 175px;
   justify-self: center;
   margin-bottom: 10px;
+}
+
+div#champion-info-spells {
+  grid-area: infospells;
+  display: grid;
+  grid-template-areas: "info spells";
 }
 
 div#champion-info {
@@ -83,18 +86,30 @@ div#champion-loading {
 img#champion-loading {
   width: 60%;
   height: 40%;
+  max-width: 185px;
+  max-height: 320px;
   align-self: center;
 }
 
-h2#champion-name {
+div.champion-name {
   border: 2px black solid;
   display: flex;
   flex-direction: column;
   margin: 0;
 }
 
-#champion-name > span {
-  align-self: center;
+div.champion-name > h2,
+div.champion-name > h3 {
+  margin: 0px;
+  text-align: center;
+}
+
+span#champion-name {
+  overflow: visible;
+  text-align: center;
+}
+
+span#champion-title {
   overflow: visible;
   text-align: center;
 }
@@ -102,7 +117,7 @@ h2#champion-name {
 div#champion-stats {
   display: flex;
   flex-direction: column;
-  grid-area: stats;
+  grid-area: spells;
   border: 2px gold solid;
 }
 

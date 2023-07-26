@@ -1,653 +1,654 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LoL Wiki</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>LoL Wiki</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-
-<body>
-  <div id="loading-screen">
-    <div class="loader"></div>
-    <p>Loading...</p>
-  </div>
-  <main>
-    <div id="champion-select">
-      <select id="champion-select">
-        <option value="">Choose a Champion</option>
-      </select>
+  <body>
+    <div id="loading-screen">
+      <div class="loader"></div>
+      <p>Loading...</p>
     </div>
-    <div id="champion-info">
-      <div id="champion-loading">
-        <img id="champion-loading" src="" />
+    <main>
+      <div id="champion-select">
+        <select id="champion-select">
+          <option value="">Choose a Champion</option>
+        </select>
       </div>
-      <h2 id="champion-name">
-        <span id="champion-name"></span>
-        <span id="champion-title"></span>
-      </h2>
-      <div id="champion-stats">
-        <div id="base-stats-header">
-          <p>Base Stats</p>
+      <div id="champion-info-spells">
+        <div id="champion-info">
+          <div id="champion-loading">
+            <img id="champion-loading" src="" />
+          </div>
+          <div class="champion-name">
+            <h2><span id="champion-name"></span></h2>
+            <h3><span id="champion-title"></span></h3>
+          </div>
+          <div id="champion-stats">
+            <div id="base-stats-header">
+              <p>Base Stats</p>
+            </div>
+            <div id="base-stats">
+              <div class="column1">
+                <p>HEALTH</p>
+                <p id="health"></p>
+              </div>
+              <div class="column2">
+                <p id="resource-type">RESOURCE</p>
+                <p id="resource"></p>
+              </div>
+            </div>
+            <div id="base-stats">
+              <div class="column1">
+                <p>HEATLH REGEN.</p>
+                <p id="healthregen"></p>
+              </div>
+              <div class="column2">
+                <p>RESOURCE REGEN.</p>
+                <p id="resourceregen"></p>
+              </div>
+            </div>
+            <div id="base-stats">
+              <div class="column1">
+                <p>ARMOR</p>
+                <p id="armor"></p>
+              </div>
+              <div class="column2">
+                <p>ATTACK DAMAGE</p>
+                <p id="attackdamage"></p>
+              </div>
+            </div>
+            <div id="base-stats">
+              <div class="column1">
+                <p>MAGIC RESIST</p>
+                <p id="magicresist"></p>
+              </div>
+              <div class="column2">
+                <p>CRIT. DAMAGE</p>
+                <p id="critdamage"></p>
+              </div>
+            </div>
+            <div id="base-stats">
+              <div class="column1">
+                <p>MOVEMENT SPEED</p>
+                <p id="movementspeed"></p>
+              </div>
+              <div class="column2">
+                <p>ATTACK RANGE</p>
+                <p id="attackrange"></p>
+              </div>
+            </div>
+            <div id="base-stats-header">
+              <p>Attack Speed</p>
+            </div>
+            <div id="base-stats">
+              <div class="column1">
+                <p>BASE AS</p>
+                <p id="baseattackspeed"></p>
+              </div>
+              <div class="column2">
+                <p>Attack Windup</p>
+                <p id="attackwindup">N/A</p>
+              </div>
+            </div>
+            <div id="base-stats">
+              <div class="column1">
+                <p>AS RATIO</p>
+                <p id="attackspeedratio"></p>
+              </div>
+              <div class="column2">
+                <p>BONUS AS</p>
+                <p id="bonusas"></p>
+              </div>
+            </div>
+            <div id="base-stats-header">
+              <p>Unit Radius</p>
+            </div>
+            <div id="base-stats">
+              <div class="column1">
+                <p>GAMEPLAY RADIUS</p>
+                <p id="gameplayradius"></p>
+              </div>
+              <div class="column2">
+                <p>SELECTION RADIUS</p>
+                <p id="selectionradius"></p>
+              </div>
+            </div>
+            <div id="base-stats">
+              <div class="column1">
+                <p>PATHING RADIUS</p>
+                <p id="pathingradius"></p>
+              </div>
+              <div class="column2">
+                <p>ACQUISITION RADIUS</p>
+                <p id="acqradius"></p>
+              </div>
+            </div>
+          </div>
         </div>
-        <div id="base-stats">
-          <div class="column1">
-            <p>HEALTH</p>
-            <p id="health"></p>
+        <div id="champion-spells">
+          <h2>
+            <p>Abilities</p>
+          </h2>
+          <hr />
+          <div class="passive">
+            <div id="champion-passive1" hidden>
+              <div>
+                <h3>
+                  <p id="passive-name1" class="ability-name"></p>
+                </h3>
+              </div>
+              <div>
+                <div>
+                  <div id="passive" class="ability">
+                    <img id="passive-icon1" src="" hidden />
+                    <div id="passive-effect1" class="ability-effect"></div>
+                  </div>
+                  <br />
+                  <div id="passive-notes1" class="notes" hidden>
+                    <div class="buttons">
+                      <button id="passive-tab-hide1">Hide</button>
+                      <button id="passive-tab-details1">Details</button>
+                    </div>
+                    <div id="passive-details1" class="details" hidden>
+                      <br />
+                      <h3>
+                        <p>Details:</p>
+                      </h3>
+                      <p id="passive-notes1"></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="champion-passive2" hidden>
+              <div>
+                <h3>
+                  <p id="passive-name2" class="ability-name"></p>
+                </h3>
+              </div>
+              <div>
+                <div>
+                  <div id="passive" class="ability">
+                    <img id="passive-icon2" src="" hidden />
+                    <div id="passive-effect2" class="ability-effect"></div>
+                  </div>
+                  <br />
+                  <div id="passive-notes2" class="notes" hidden>
+                    <div class="buttons">
+                      <button id="passive-tab-hide2">Hide</button>
+                      <button id="passive-tab-details2">Details</button>
+                    </div>
+                    <div id="passive-details2" class="details" hidden>
+                      <br />
+                      <h3>
+                        <p>Details:</p>
+                      </h3>
+                      <p id="passive-notes2"></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="champion-passive3" hidden>
+              <div>
+                <h3>
+                  <p id="passive-name3" class="ability-name"></p>
+                </h3>
+              </div>
+              <div>
+                <div>
+                  <div id="passive" class="ability">
+                    <img id="passive-icon3" src="" hidden />
+                    <div id="passive-effect3" class="ability-effect"></div>
+                  </div>
+                  <br />
+                  <div id="passive-notes3" class="notes" hidden>
+                    <div class="buttons">
+                      <button id="passive-tab-hide3">Hide</button>
+                      <button id="passive-tab-details3">Details</button>
+                    </div>
+                    <div id="passive-details3" class="details" hidden>
+                      <br />
+                      <h3>
+                        <p>Details:</p>
+                      </h3>
+                      <p id="passive-notes3"></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="champion-passive4" hidden>
+              <div>
+                <h3>
+                  <p id="passive-name4" class="ability-name"></p>
+                </h3>
+              </div>
+              <div>
+                <div>
+                  <div id="passive" class="ability">
+                    <img id="passive-icon4" src="" hidden />
+                    <div id="passive-effect4" class="ability-effect"></div>
+                  </div>
+                  <br />
+                  <div id="passive-notes4" class="notes" hidden>
+                    <div class="buttons">
+                      <button id="passive-tab-hide4">Hide</button>
+                      <button id="passive-tab-details4">Details</button>
+                    </div>
+                    <div id="passive-details4" class="details" hidden>
+                      <br />
+                      <h3>
+                        <p>Details:</p>
+                      </h3>
+                      <p id="passive-notes4"></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="champion-passive5" hidden>
+              <div>
+                <h3>
+                  <p id="passive-name5" class="ability-name"></p>
+                </h3>
+              </div>
+              <div>
+                <div>
+                  <div id="passive" class="ability">
+                    <img id="passive-icon5" src="" hidden />
+                    <div id="passive-effect5" class="ability-effect"></div>
+                  </div>
+                  <br />
+                  <div id="passive-notes5" class="notes" hidden>
+                    <div class="buttons">
+                      <button id="passive-tab-hide5">Hide</button>
+                      <button id="passive-tab-details5">Details</button>
+                    </div>
+                    <div id="passive-details5" class="details" hidden>
+                      <br />
+                      <h3>
+                        <p>Details:</p>
+                      </h3>
+                      <p id="passive-notes5"></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="champion-passive6" hidden>
+              <div>
+                <h3>
+                  <p id="passive-name6" class="ability-name"></p>
+                </h3>
+              </div>
+              <div>
+                <div>
+                  <div id="passive" class="ability">
+                    <img id="passive-icon6" src="" hidden />
+                    <div id="passive-effect6" class="ability-effect"></div>
+                  </div>
+                  <br />
+                  <div id="passive-notes6" class="notes" hidden>
+                    <div class="buttons">
+                      <button id="passive-tab-hide6">Hide</button>
+                      <button id="passive-tab-details6">Details</button>
+                    </div>
+                    <div id="passive-details6" class="details" hidden>
+                      <br />
+                      <h3>
+                        <p>Details:</p>
+                      </h3>
+                      <p id="passive-notes6"></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="column2">
-            <p id="resource-type">RESOURCE</p>
-            <p id="resource"></p>
+          <hr />
+          <div class="Q">
+            <div id="championQ1">
+              <div>
+                <h3>
+                  <p id="q1-name" class="ability-name"></p>
+                </h3>
+              </div>
+              <div>
+                <div id="q1ability" class="ability">
+                  <img id="q1-icon" src="" hidden />
+                  <div id="q1-effect" class="ability-effect"></div>
+                </div>
+                <br />
+                <div id="q1-notes" class="notes" hidden>
+                  <div class="buttons">
+                    <button id="q1-tab-hide">Hide</button>
+                    <button id="q1-tab-details">Details</button>
+                  </div>
+                  <div id="q1-details" class="details" hidden>
+                    <br />
+                    <h3>
+                      <p>Details:</p>
+                    </h3>
+                    <p id="q1-notes"></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="championQ2" hidden>
+              <div>
+                <h3>
+                  <p id="q2-name" class="ability-name"></p>
+                </h3>
+              </div>
+              <div>
+                <div id="q2ability" class="ability">
+                  <img id="q2-icon" src="" hidden />
+                  <div id="q2-effect" class="ability-effect"></div>
+                </div>
+                <br />
+                <div id="q2-notes" class="notes" hidden>
+                  <div class="buttons">
+                    <button id="q2-tab-hide">Hide</button>
+                    <button id="q2-tab-details">Details</button>
+                  </div>
+                  <div id="q2-details" class="details" hidden>
+                    <br />
+                    <h3>
+                      <p>Details:</p>
+                    </h3>
+                    <p id="q2-notes"></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="championQ3" hidden>
+              <div>
+                <h3>
+                  <p id="q3-name" class="ability-name"></p>
+                </h3>
+              </div>
+              <div>
+                <div id="q3ability" class="ability">
+                  <img id="q3-icon" src="" hidden />
+                  <div id="q3-effect" class="ability-effect"></div>
+                </div>
+                <br />
+                <div id="q3-notes" class="notes" hidden>
+                  <div class="buttons">
+                    <button id="q3-tab-hide">Hide</button>
+                    <button id="q3-tab-details">Details</button>
+                  </div>
+                  <div id="q3-details" class="details" hidden>
+                    <br />
+                    <h3>
+                      <p>Details:</p>
+                    </h3>
+                    <p id="q3-notes"></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="championQ4" hidden>
+              <div>
+                <h3>
+                  <p id="q4-name" class="ability-name"></p>
+                </h3>
+              </div>
+              <div>
+                <div id="q4ability" class="ability">
+                  <img id="q4-icon" src="" hidden />
+                  <div id="q4-effect" class="ability-effect"></div>
+                </div>
+                <br />
+                <div id="q4-notes" class="notes" hidden>
+                  <div class="buttons">
+                    <button id="q4-tab-hide">Hide</button>
+                    <button id="q4-tab-details">Details</button>
+                  </div>
+                  <div id="q4-details" class="details" hidden>
+                    <br />
+                    <h3>
+                      <p>Details:</p>
+                    </h3>
+                    <p id="q4-notes"></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="championQ5" hidden>
+              <div>
+                <h3>
+                  <p id="q5-name" class="ability-name"></p>
+                </h3>
+              </div>
+              <div>
+                <div id="q5ability" class="ability">
+                  <img id="q5-icon" src="" hidden />
+                  <div id="q5-effect" class="ability-effect"></div>
+                </div>
+                <br />
+                <div id="q5-notes" class="notes" hidden>
+                  <div class="buttons">
+                    <button id="q5-tab-hide">Hide</button>
+                    <button id="q5-tab-details">Details</button>
+                  </div>
+                  <div id="q5-details" class="details" hidden>
+                    <br />
+                    <h3>
+                      <p>Details:</p>
+                    </h3>
+                    <p id="q5-notes"></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="championQ6" hidden>
+              <div>
+                <h3>
+                  <p id="q6-name" class="ability-name"></p>
+                </h3>
+              </div>
+              <div>
+                <div id="q6ability" class="ability">
+                  <img id="q6-icon" src="" hidden />
+                  <div id="q6-effect" class="ability-effect"></div>
+                </div>
+                <br />
+                <div id="q6-notes" class="notes" hidden>
+                  <div class="buttons">
+                    <button id="q6-tab-hide">Hide</button>
+                    <button id="q6-tab-details">Details</button>
+                  </div>
+                  <div id="q6-details" class="details" hidden>
+                    <br />
+                    <h3>
+                      <p>Details:</p>
+                    </h3>
+                    <p id="q6-notes"></p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-        <div id="base-stats">
-          <div class="column1">
-            <p>HEATLH REGEN.</p>
-            <p id="healthregen"></p>
+          <hr />
+          <div class="W">
+            <div id="championW1">
+              <div>
+                <h3>
+                  <p id="w1-name" class="ability-name"></p>
+                </h3>
+              </div>
+              <div>
+                <div id="w1ability" class="ability">
+                  <img id="w1-icon" src="" hidden />
+                  <div id="w1-effect" class="ability-effect"></div>
+                </div>
+                <br />
+                <div id="w1-notes" class="notes" hidden>
+                  <div class="buttons">
+                    <button id="w1-tab-hide">Hide</button>
+                    <button id="w1-tab-details">Details</button>
+                  </div>
+                  <div id="w1-details" class="details" hidden>
+                    <br />
+                    <h3>
+                      <p>Details:</p>
+                    </h3>
+                    <p id="w1-notes"></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="championW2" hidden>
+              <div>
+                <h3>
+                  <p id="w2-name" class="ability-name"></p>
+                </h3>
+              </div>
+              <div>
+                <div id="w2ability" class="ability">
+                  <img id="w2-icon" src="" hidden />
+                  <div id="w2-effect" class="ability-effect"></div>
+                </div>
+                <br />
+                <div id="w2-notes" class="notes" hidden>
+                  <div class="buttons">
+                    <button id="w2-tab-hide">Hide</button>
+                    <button id="w2-tab-details">Details</button>
+                  </div>
+                  <div id="w2-details" class="details" hidden>
+                    <br />
+                    <h3>
+                      <p>Details:</p>
+                    </h3>
+                    <p id="w2-notes"></p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="column2">
-            <p>RESOURCE REGEN.</p>
-            <p id="resourceregen"></p>
+          <hr />
+          <div class="E">
+            <div id="championE1">
+              <div>
+                <h3>
+                  <p id="e1-name" class="ability-name"></p>
+                </h3>
+              </div>
+              <div>
+                <div id="e1ability" class="ability">
+                  <img id="e1-icon" src="" hidden />
+                  <div id="e1-effect" class="ability-effect"></div>
+                </div>
+                <br />
+                <div id="e1-notes" class="notes" hidden>
+                  <div class="buttons">
+                    <button id="e1-tab-hide">Hide</button>
+                    <button id="e1-tab-details">Details</button>
+                  </div>
+                  <div id="e1-details" class="details" hidden>
+                    <br />
+                    <h3>
+                      <p>Details:</p>
+                    </h3>
+                    <p id="e1-notes"></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="championE2" hidden>
+              <div>
+                <h3>
+                  <p id="e2-name" class="ability-name"></p>
+                </h3>
+              </div>
+              <div>
+                <div id="e2ability" class="ability">
+                  <img id="e2-icon" src="" hidden />
+                  <div id="e2-effect" class="ability-effect"></div>
+                </div>
+                <br />
+                <div id="e2-notes" class="notes" hidden>
+                  <div class="buttons">
+                    <button id="e2-tab-hide">Hide</button>
+                    <button id="e2-tab-details">Details</button>
+                  </div>
+                  <div id="e2-details" class="details" hidden>
+                    <br />
+                    <h3>
+                      <p>Details:</p>
+                    </h3>
+                    <p id="e2-notes"></p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-        <div id="base-stats">
-          <div class="column1">
-            <p>ARMOR</p>
-            <p id="armor"></p>
-          </div>
-          <div class="column2">
-            <p>ATTACK DAMAGE</p>
-            <p id="attackdamage"></p>
-          </div>
-        </div>
-        <div id="base-stats">
-          <div class="column1">
-            <p>MAGIC RESIST</p>
-            <p id="magicresist"></p>
-          </div>
-          <div class="column2">
-            <p>CRIT. DAMAGE</p>
-            <p id="critdamage"></p>
-          </div>
-        </div>
-        <div id="base-stats">
-          <div class="column1">
-            <p>MOVEMENT SPEED</p>
-            <p id="movementspeed"></p>
-          </div>
-          <div class="column2">
-            <p>ATTACK RANGE</p>
-            <p id="attackrange"></p>
-          </div>
-        </div>
-        <div id="base-stats-header">
-          <p>Attack Speed</p>
-        </div>
-        <div id="base-stats">
-          <div class="column1">
-            <p>BASE AS</p>
-            <p id="baseattackspeed"></p>
-          </div>
-          <div class="column2">
-            <p>Attack Windup</p>
-            <p id="attackwindup">N/A</p>
-          </div>
-        </div>
-        <div id="base-stats">
-          <div class="column1">
-            <p>AS RATIO</p>
-            <p id="attackspeedratio"></p>
-          </div>
-          <div class="column2">
-            <p>BONUS AS</p>
-            <p id="bonusas"></p>
-          </div>
-        </div>
-        <div id="base-stats-header">
-          <p>Unit Radius</p>
-        </div>
-        <div id="base-stats">
-          <div class="column1">
-            <p>GAMEPLAY RADIUS</p>
-            <p id="gameplayradius"></p>
-          </div>
-          <div class="column2">
-            <p>SELECTION RADIUS</p>
-            <p id="selectionradius"></p>
-          </div>
-        </div>
-        <div id="base-stats">
-          <div class="column1">
-            <p>PATHING RADIUS</p>
-            <p id="pathingradius"></p>
-          </div>
-          <div class="column2">
-            <p>ACQUISITION RADIUS</p>
-            <p id="acqradius"></p>
+          <hr />
+          <div class="R">
+            <div id="championR1">
+              <div>
+                <h3>
+                  <p id="r1-name" class="ability-name"></p>
+                </h3>
+              </div>
+              <div>
+                <div id="r1ability" class="ability">
+                  <img id="r1-icon" src="" hidden />
+                  <div id="r1-effect" class="ability-effect"></div>
+                </div>
+                <br />
+                <div id="r1-notes" class="notes" hidden>
+                  <div class="buttons">
+                    <button id="r1-tab-hide">Hide</button>
+                    <button id="r1-tab-details">Details</button>
+                  </div>
+                  <div id="r1-details" class="details" hidden>
+                    <br />
+                    <h3>
+                      <p>Details:</p>
+                    </h3>
+                    <p id="r1-notes"></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="championR2" hidden>
+              <div>
+                <h3>
+                  <p id="r2-name" class="ability-name"></p>
+                </h3>
+              </div>
+              <div>
+                <div id="r2ability" class="ability">
+                  <img id="r2-icon" src="" hidden />
+                  <div id="r2-effect" class="ability-effect"></div>
+                </div>
+                <br />
+                <div id="r2-notes" class="notes" hidden>
+                  <div class="buttons">
+                    <button id="r2-tab-hide">Hide</button>
+                    <button id="r2-tab-details">Details</button>
+                  </div>
+                  <div id="r2-details" class="details" hidden>
+                    <br />
+                    <h3>
+                      <p>Details:</p>
+                    </h3>
+                    <p id="r2-notes"></p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <div id="champion-spells">
-      <h2>
-        <p>Abilities</p>
-      </h2>
-      <hr />
-      <div class="passive">
-        <div id="champion-passive1" hidden>
-          <div>
-            <h3>
-              <p id="passive-name1" class="ability-name">Passive:</p>
-            </h3>
-          </div>
-          <div>
-            <div>
-              <div id="passive" class="ability">
-                <img id="passive-icon1" src="" hidden />
-                <div id="passive-effect1" class="ability-effect"></div>
-              </div>
-              <br />
-              <div id="passive-notes1" class="notes" hidden>
-                <div class="buttons">
-                  <button id="passive-tab-hide1">Hide</button>
-                  <button id="passive-tab-details1">Details</button>
-                </div>
-                <div id="passive-details1" class="details" hidden>
-                  <br />
-                  <h3>
-                    <p>Details:</p>
-                  </h3>
-                  <p id="passive-notes1"></p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div id="champion-passive2" hidden>
-          <div>
-            <h3>
-              <p id="passive-name2" class="ability-name">Passive:</p>
-            </h3>
-          </div>
-          <div>
-            <div>
-              <div id="passive" class="ability">
-                <img id="passive-icon2" src="" hidden />
-                <div id="passive-effect2" class="ability-effect"></div>
-              </div>
-              <br />
-              <div id="passive-notes2" class="notes" hidden>
-                <div class="buttons">
-                  <button id="passive-tab-hide2">Hide</button>
-                  <button id="passive-tab-details2">Details</button>
-                </div>
-                <div id="passive-details2" class="details" hidden>
-                  <br />
-                  <h3>
-                    <p>Details:</p>
-                  </h3>
-                  <p id="passive-notes2"></p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div id="champion-passive3" hidden>
-          <div>
-            <h3>
-              <p id="passive-name3" class="ability-name">Passive:</p>
-            </h3>
-          </div>
-          <div>
-            <div>
-              <div id="passive" class="ability">
-                <img id="passive-icon3" src="" hidden />
-                <div id="passive-effect3" class="ability-effect"></div>
-              </div>
-              <br />
-              <div id="passive-notes3" class="notes" hidden>
-                <div class="buttons">
-                  <button id="passive-tab-hide3">Hide</button>
-                  <button id="passive-tab-details3">Details</button>
-                </div>
-                <div id="passive-details3" class="details" hidden>
-                  <br />
-                  <h3>
-                    <p>Details:</p>
-                  </h3>
-                  <p id="passive-notes3"></p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div id="champion-passive4" hidden>
-          <div>
-            <h3>
-              <p id="passive-name4" class="ability-name">Passive:</p>
-            </h3>
-          </div>
-          <div>
-            <div>
-              <div id="passive" class="ability">
-                <img id="passive-icon4" src="" hidden />
-                <div id="passive-effect4" class="ability-effect"></div>
-              </div>
-              <br />
-              <div id="passive-notes4" class="notes" hidden>
-                <div class="buttons">
-                  <button id="passive-tab-hide4">Hide</button>
-                  <button id="passive-tab-details4">Details</button>
-                </div>
-                <div id="passive-details4" class="details" hidden>
-                  <br />
-                  <h3>
-                    <p>Details:</p>
-                  </h3>
-                  <p id="passive-notes4"></p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div id="champion-passive5" hidden>
-          <div>
-            <h3>
-              <p id="passive-name5" class="ability-name">Passive:</p>
-            </h3>
-          </div>
-          <div>
-            <div>
-              <div id="passive" class="ability">
-                <img id="passive-icon5" src="" hidden />
-                <div id="passive-effect5" class="ability-effect"></div>
-              </div>
-              <br />
-              <div id="passive-notes5" class="notes" hidden>
-                <div class="buttons">
-                  <button id="passive-tab-hide5">Hide</button>
-                  <button id="passive-tab-details5">Details</button>
-                </div>
-                <div id="passive-details5" class="details" hidden>
-                  <br />
-                  <h3>
-                    <p>Details:</p>
-                  </h3>
-                  <p id="passive-notes5"></p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div id="champion-passive6" hidden>
-          <div>
-            <h3>
-              <p id="passive-name6" class="ability-name">Passive:</p>
-            </h3>
-          </div>
-          <div>
-            <div>
-              <div id="passive" class="ability">
-                <img id="passive-icon6" src="" hidden />
-                <div id="passive-effect6" class="ability-effect"></div>
-              </div>
-              <br />
-              <div id="passive-notes6" class="notes" hidden>
-                <div class="buttons">
-                  <button id="passive-tab-hide6">Hide</button>
-                  <button id="passive-tab-details6">Details</button>
-                </div>
-                <div id="passive-details6" class="details" hidden>
-                  <br />
-                  <h3>
-                    <p>Details:</p>
-                  </h3>
-                  <p id="passive-notes6"></p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <hr />
-      <div class="Q">
-        <div id="championQ1">
-          <div>
-            <h3>
-              <p id="q1-name" class="ability-name">Q:</p>
-            </h3>
-          </div>
-          <div>
-            <div id="q1ability" class="ability">
-              <img id="q1-icon" src="" hidden />
-              <div id="q1-effect" class="ability-effect"></div>
-            </div>
-            <br />
-            <div id="q1-notes" class="notes" hidden>
-              <div class="buttons">
-                <button id="q1-tab-hide">Hide</button>
-                <button id="q1-tab-details">Details</button>
-              </div>
-              <div id="q1-details" class="details" hidden>
-                <br />
-                <h3>
-                  <p>Details:</p>
-                </h3>
-                <p id="q1-notes"></p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div id="championQ2" hidden>
-          <div>
-            <h3>
-              <p id="q2-name" class="ability-name">Q:</p>
-            </h3>
-          </div>
-          <div>
-            <div id="q2ability" class="ability">
-              <img id="q2-icon" src="" hidden />
-              <div id="q2-effect" class="ability-effect"></div>
-            </div>
-            <br />
-            <div id="q2-notes" class="notes" hidden>
-              <div class="buttons">
-                <button id="q2-tab-hide">Hide</button>
-                <button id="q2-tab-details">Details</button>
-              </div>
-              <div id="q2-details" class="details" hidden>
-                <br />
-                <h3>
-                  <p>Details:</p>
-                </h3>
-                <p id="q2-notes"></p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div id="championQ3" hidden>
-          <div>
-            <h3>
-              <p id="q3-name" class="ability-name">Q:</p>
-            </h3>
-          </div>
-          <div>
-            <div id="q3ability" class="ability">
-              <img id="q3-icon" src="" hidden />
-              <div id="q3-effect" class="ability-effect"></div>
-            </div>
-            <br />
-            <div id="q3-notes" class="notes" hidden>
-              <div class="buttons">
-                <button id="q3-tab-hide">Hide</button>
-                <button id="q3-tab-details">Details</button>
-              </div>
-              <div id="q3-details" class="details" hidden>
-                <br />
-                <h3>
-                  <p>Details:</p>
-                </h3>
-                <p id="q3-notes"></p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div id="championQ4" hidden>
-          <div>
-            <h3>
-              <p id="q4-name" class="ability-name">Q:</p>
-            </h3>
-          </div>
-          <div>
-            <div id="q4ability" class="ability">
-              <img id="q4-icon" src="" hidden />
-              <div id="q4-effect" class="ability-effect"></div>
-            </div>
-            <br />
-            <div id="q4-notes" class="notes" hidden>
-              <div class="buttons">
-                <button id="q4-tab-hide">Hide</button>
-                <button id="q4-tab-details">Details</button>
-              </div>
-              <div id="q4-details" class="details" hidden>
-                <br />
-                <h3>
-                  <p>Details:</p>
-                </h3>
-                <p id="q4-notes"></p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div id="championQ5" hidden>
-          <div>
-            <h3>
-              <p id="q5-name" class="ability-name">Q:</p>
-            </h3>
-          </div>
-          <div>
-            <div id="q5ability" class="ability">
-              <img id="q5-icon" src="" hidden />
-              <div id="q5-effect" class="ability-effect"></div>
-            </div>
-            <br />
-            <div id="q5-notes" class="notes" hidden>
-              <div class="buttons">
-                <button id="q5-tab-hide">Hide</button>
-                <button id="q5-tab-details">Details</button>
-              </div>
-              <div id="q5-details" class="details" hidden>
-                <br />
-                <h3>
-                  <p>Details:</p>
-                </h3>
-                <p id="q5-notes"></p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div id="championQ6" hidden>
-          <div>
-            <h3>
-              <p id="q6-name" class="ability-name">Q:</p>
-            </h3>
-          </div>
-          <div>
-            <div id="q6ability" class="ability">
-              <img id="q6-icon" src="" hidden />
-              <div id="q6-effect" class="ability-effect"></div>
-            </div>
-            <br />
-            <div id="q6-notes" class="notes" hidden>
-              <div class="buttons">
-                <button id="q6-tab-hide">Hide</button>
-                <button id="q6-tab-details">Details</button>
-              </div>
-              <div id="q6-details" class="details" hidden>
-                <br />
-                <h3>
-                  <p>Details:</p>
-                </h3>
-                <p id="q6-notes"></p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <hr />
-      <div class="W">
-        <div id="championW1">
-          <div>
-            <h3>
-              <p id="w1-name" class="ability-name">W:</p>
-            </h3>
-          </div>
-          <div>
-            <div id="w1ability" class="ability">
-              <img id="w1-icon" src="" hidden />
-              <div id="w1-effect" class="ability-effect"></div>
-            </div>
-            <br />
-            <div id="w1-notes" class="notes" hidden>
-              <div class="buttons">
-                <button id="w1-tab-hide">Hide</button>
-                <button id="w1-tab-details">Details</button>
-              </div>
-              <div id="w1-details" class="details" hidden>
-                <br />
-                <h3>
-                  <p>Details:</p>
-                </h3>
-                <p id="w1-notes"></p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div id="championW2" hidden>
-          <div>
-            <h3>
-              <p id="w2-name" class="ability-name">W:</p>
-            </h3>
-          </div>
-          <div>
-            <div id="w2ability" class="ability">
-              <img id="w2-icon" src="" hidden />
-              <div id="w2-effect" class="ability-effect"></div>
-            </div>
-            <br />
-            <div id="w2-notes" class="notes" hidden>
-              <div class="buttons">
-                <button id="w2-tab-hide">Hide</button>
-                <button id="w2-tab-details">Details</button>
-              </div>
-              <div id="w2-details" class="details" hidden>
-                <br />
-                <h3>
-                  <p>Details:</p>
-                </h3>
-                <p id="w2-notes"></p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <hr />
-      <div class="E">
-        <div id="championE1">
-          <div>
-            <h3>
-              <p id="e1-name" class="ability-name">E:</p>
-            </h3>
-          </div>
-          <div>
-            <div id="e1ability" class="ability">
-              <img id="e1-icon" src="" hidden />
-              <div id="e1-effect" class="ability-effect"></div>
-            </div>
-            <br />
-            <div id="e1-notes" class="notes" hidden>
-              <div class="buttons">
-                <button id="e1-tab-hide">Hide</button>
-                <button id="e1-tab-details">Details</button>
-              </div>
-              <div id="e1-details" class="details" hidden>
-                <br />
-                <h3>
-                  <p>Details:</p>
-                </h3>
-                <p id="e1-notes"></p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div id="championE2" hidden>
-          <div>
-            <h3>
-              <p id="e2-name" class="ability-name">E:</p>
-            </h3>
-          </div>
-          <div>
-            <div id="e2ability" class="ability">
-              <img id="e2-icon" src="" hidden />
-              <div id="e2-effect" class="ability-effect"></div>
-            </div>
-            <br />
-            <div id="e2-notes" class="notes" hidden>
-              <div class="buttons">
-                <button id="e2-tab-hide">Hide</button>
-                <button id="e2-tab-details">Details</button>
-              </div>
-              <div id="e2-details" class="details" hidden>
-                <br />
-                <h3>
-                  <p>Details:</p>
-                </h3>
-                <p id="e2-notes"></p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <hr />
-      <div class="R">
-        <div id="championR1">
-          <div>
-            <h3>
-              <p id="r1-name" class="ability-name">R:</p>
-            </h3>
-          </div>
-          <div>
-            <div id="r1ability" class="ability">
-              <img id="r1-icon" src="" hidden />
-              <div id="r1-effect" class="ability-effect"></div>
-            </div>
-            <br />
-            <div id="r1-notes" class="notes" hidden>
-              <div class="buttons">
-                <button id="r1-tab-hide">Hide</button>
-                <button id="r1-tab-details">Details</button>
-              </div>
-              <div id="r1-details" class="details" hidden>
-                <br />
-                <h3>
-                  <p>Details:</p>
-                </h3>
-                <p id="r1-notes"></p>
-              </div>
-            </div>
-          </div>
-        </div>
-                  <div id="championR2" hidden>
-            <div>
-              <h3>
-                <p id="r2-name" class="ability-name">R:</p>
-              </h3>
-            </div>
-            <div>
-              <div id="r2ability" class="ability">
-                <img id="r2-icon" src="" hidden />
-                <div id="r2-effect" class="ability-effect"></div>
-              </div>
-              <br />
-              <div id="r2-notes" class="notes" hidden>
-                <div class="buttons">
-                  <button id="r2-tab-hide">Hide</button>
-                  <button id="r2-tab-details">Details</button>
-                </div>
-                <div id="r2-details" class="details" hidden>
-                  <br />
-                  <h3>
-                    <p>Details:</p>
-                  </h3>
-                  <p id="r2-notes"></p>
-                </div>
-              </div>
-            </div>
-          </div>
-      </div>
-  </main>
-  <script src="wiki.js"></script>
-</body>
-
+    </main>
+    <script src="wiki.js"></script>
+  </body>
 </html>

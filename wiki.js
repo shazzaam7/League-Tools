@@ -262,6 +262,7 @@ function fillAbilities() {
         })
     }
     document.getElementById('loading-screen').style.display = 'none';
+    document.querySelector("div#champion-info-spells").style.display = "grid";
 }
 
 function stylePassive(element) {
@@ -284,10 +285,14 @@ function styleAbilities(element) {
     })
 }
 
+document.querySelector("div#champion-info-spells").style.display = "none";
+
 ChampionSelect.addEventListener("change", (event) => {
     if (ChampionSelect.selectedIndex > 0) {
         document.getElementById('loading-screen').style.display = 'flex';
         grabChampionDetails(event.target.value)
+    } else if (ChampionSelect.selectedIndex == 0) {
+        document.querySelector("div#champion-info-spells").style.display = "none";
     }
 });
 
