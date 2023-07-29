@@ -1,7 +1,7 @@
 body {
-  min-width: 85%;
+  min-width: 70%;
   max-width: 900px;
-  min-height: 100vh;
+  max-height: 50vh;
   margin-left: auto;
   margin-right: auto;
 }
@@ -77,8 +77,40 @@ div#champion-select > select {
   margin-bottom: 10px;
 }
 
-div#champion-info-spells {
+div#champion-selector {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  border: 2px solid black;
+  overflow-y: scroll;
+  height: 500px;
+  width: 75%;
+  margin-bottom: 20px;
+}
+
+div.champion-icon {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0px 0px 0px;
+  max-height: 250px;
+}
+
+div.champion-icon > p {
+  margin: 5px 0px 0px 0px;
+  text-align: center;
+}
+
+div.champion-icon > img {
+  max-height: 75%;
+  max-width: 75%;
+  align-self: center;
+  border: 5px solid black;
+}
+
+div.info {
   grid-area: infospells;
+}
+
+div#champion-info-spells {
   display: grid;
   grid-template-areas: "info spells";
 }
@@ -210,8 +242,15 @@ div.ability-effect {
   overflow: hidden;
 }
 
-div.ability-effect > span {
+.innate-text {
   color: blue;
+  font-weight: bold;
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+.extra-text {
+  color: red;
   font-weight: bold;
   font-size: 18px;
   margin-top: 10px;

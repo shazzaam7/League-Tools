@@ -6,7 +6,6 @@
     <title>LoL Wiki</title>
     <link rel="stylesheet" href="style.css" />
   </head>
-
   <body>
     <div id="loading-screen">
       <div class="loader"></div>
@@ -16,12 +15,15 @@
       <div id="header">
         <a href="../index.html">Homepage</a>
         <div id="champion-select">
-          <select id="champion-select">
-            <option value="">Choose a Champion</option>
+          <select id="champions-items">
+            <option value="">Choose</option>
+            <option value="champions">Champions</option>
+            <option value="items">Items</option>
           </select>
+          <div id="champion-selector"></div>
         </div>
       </div>
-      <div id="champion-info-spells">
+      <div id="champion-info-spells" class="info">
         <div id="champion-info">
           <div id="champion-loading">
             <img id="champion-loading" src="" />
@@ -651,7 +653,9 @@
           </div>
         </div>
       </div>
+      <div id="items-info" class="info" hidden>This is where items will go</div>
     </main>
     <script src="wiki.js"></script>
+    <script src="champions.js"></script>
   </body>
 </html>
