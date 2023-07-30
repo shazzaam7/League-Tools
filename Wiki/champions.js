@@ -3,16 +3,11 @@ let currentChampion;
 let resources = ["MANA", "ENERGY", "RAGE", "FURY"];
 
 function grabAllChampions() {
+    document.getElementById('loading-screen').style.display = 'flex';
+    ChampionSelect.innerHTML = "";
     fetch(`https://shazzaam7.github.io/LoL-DDragon/champions.json`)
         .then(res => res.json())
         .then(data => {
-            /*
-            for (let key in data) {
-                let newChampion = document.createElement("option");
-                newChampion.value = key;
-                newChampion.innerText = data[key].name;
-                ChampionSelect.appendChild(newChampion);
-            };*/
             for (let key in data) {
                 let newChampion = document.createElement("div");
                 let icon = document.createElement("img");
@@ -361,14 +356,6 @@ function fillAbilitiesDefault() {
 }
 
 function styleAbilities(element) {
-    /*
-    element.forEach(p => {
-        let text = p.textContent;
-        const regex = /(Innate(?:\s*-\s*[\w\s]+)?\s*:|Active(?:\s*-\s*[\w\s]+)?\s*:|Passive(?:\s*-\s*[\w\s]+)?\s*:|Recast(?:\s*-\s*[\w\s]+)?\s*:|Toggle(?:\s*-\s*[\w\s]+)?\s*:|Pow-Pow(?:\s*-\s*[\w\s]+)?\s*:|Fishbones(?:\s*-\s*[\w\s]+)?\s*:|First Cast(?:\s*-\s*[\w\s]+)?\s*:|Second Cast(?:\s*-\s*[\w\s]+)?\s*:|Third Cast(?:\s*-\s*[\w\s]+)?\s*:)/g;
-        const modifiedContent = text.replace(regex, '\n$&');
-        p.innerHTML = modifiedContent.replace(regex,
-            '<br><span class="innate-text">$&</span>');
-    })*/
     element.forEach(p => {
         let text = p.textContent;
         const regex = /(Innate(?:\s*-\s*[\w\s]+)?\s*:|Active(?:\s*-\s*[\w\s]+)?\s*:|Passive(?:\s*-\s*[\w\s]+)?\s*:|Recast(?:\s*-\s*[\w\s]+)?\s*:|Toggle(?:\s*-\s*[\w\s]+)?\s*:|Pow-Pow(?:\s*-\s*[\w\s]+)?\s*:|Fishbones(?:\s*-\s*[\w\s]+)?\s*:|First Cast(?:\s*-\s*[\w\s]+)?\s*:|Second Cast(?:\s*-\s*[\w\s]+)?\s*:|Third Cast(?:\s*-\s*[\w\s]+)?\s*:|Passive - Soul-Marked(?:\s*-\s*[\w\s]+)?\s*:)/g;
@@ -391,6 +378,3 @@ function styleAbilities(element) {
         p.innerHTML = modifiedContent;
     })
 }
-
-document.querySelector("div#champion-info-spells").style.display = "none";
-ChampionSelect.style.display = "none";

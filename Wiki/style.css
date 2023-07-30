@@ -106,6 +106,44 @@ div.champion-icon > img {
   border: 5px solid black;
 }
 
+div#item-selector {
+  display: flex;
+  flex-direction: row;
+  border: 2px solid black;
+  overflow-y: scroll;
+  width: 75%;
+  height: 500px;
+  margin-bottom: 20px;
+}
+
+div.item-icons {
+  margin-left: 10px;
+}
+
+div.item-icons > img {
+  border: 2px solid green;
+  margin: 2px;
+  width: 40px;
+  height: 40px;
+}
+
+div#items {
+  margin-top: 10px;
+  display: block;
+  align-items: center;
+}
+
+div#items > hr {
+  width: 97%;
+  align-self: center;
+}
+
+span.item-class {
+  margin: 10px 10px 10px 10px;
+  display: block;
+  text-align: center;
+}
+
 div.info {
   grid-area: infospells;
 }
@@ -282,4 +320,34 @@ div.notes > button:hover {
 
 div.R {
   margin-bottom: 10px;
+}
+
+div#item-info {
+  border: 2px solid black;
+  width: 75%;
+  justify-self: center;
+  display: grid;
+}
+
+div#item-icon-name-cost {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin-left: 20px;
+}
+
+div#item-name-cost {
+  display: grid;
+  margin-left: 15px;
+}
+
+img#item-icon {
+  width: 40px;
+  height: 40px;
+}
+
+div#item-cost > img {
+  width: 20px;
+  height: 20px;
+  transform: translate(0%, 20%);
 }

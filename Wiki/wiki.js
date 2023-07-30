@@ -14,21 +14,27 @@ function grabLatestVersion() {
         .catch(error => console.log(error))
 };
 
-ChampionItems.addEventListener("change", (event) => {
-    document.getElementById('loading-screen').style.display = 'flex';
+ChampionItems.addEventListener("change", () => {
     if (ChampionItems.selectedIndex == 1) {
         grabAllChampions();
+        document.querySelector("div#item-selector").style.display = "none";
         document.querySelector("div#champion-selector").style.display = "grid";
-        document.querySelector("div#items-info").style.display = "none";
+        document.querySelector("div#item-info").style.display = "none";
     } else if (ChampionItems.selectedIndex == 2) {
+        grabAllItems();
         document.querySelector("div#champion-info-spells").style.display = "none";
         document.querySelector("div#champion-selector").style.display = "none";
-        document.querySelector("div#items-info").style.display = "grid";
+        document.querySelector("div#item-selector").style.display = "grid";
     } else {
         document.querySelector("div#champion-info-spells").style.display = "none";
         document.querySelector("div#champion-selector").style.display = "none";
-        document.querySelector("div#items-info").style.display = "none";
+        document.querySelector("div#item-selector").style.display = "none";
+        document.querySelector("div#item-info").style.display = "none";
     };
-    document.getElementById('loading-screen').style.display = 'none';
 });
+
+document.querySelector("div#item-selector").style.display = "none";
+document.querySelector("div#champion-info-spells").style.display = "none";
+document.querySelector("div#champion-selector").style.display = "none";
+document.querySelector("div#item-info").style.display = "none";
 grabLatestVersion();
