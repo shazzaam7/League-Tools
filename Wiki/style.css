@@ -344,6 +344,7 @@ div#item-name-cost {
 img#item-icon {
   width: 40px;
   height: 40px;
+  border: 2px solid green;
 }
 
 div#item-cost > img {
