@@ -1,25 +1,23 @@
 const ChampionSelect = document.querySelector("div#champion-selector");
+
 let currentChampion;
 let resources = ["MANA", "ENERGY", "RAGE", "FURY"];
 
 function grabAllChampions() {
+    document.getElementById('loading-screen').style.display = 'flex';
+    ChampionSelect.innerHTML = "";
     fetch(`https://shazzaam7.github.io/LoL-DDragon/champions.json`)
         .then(res => res.json())
         .then(data => {
-            /*
-            for (let key in data) {
-                let newChampion = document.createElement("option");
-                newChampion.value = key;
-                newChampion.innerText = data[key].name;
-                ChampionSelect.appendChild(newChampion);
-            };*/
             for (let key in data) {
                 let newChampion = document.createElement("div");
                 let icon = document.createElement("img");
                 let name = document.createElement("p");
                 newChampion.className = "champion-icon";
                 newChampion.value = key;
+                newChampion.setAttribute("data-name", data[key].name);
                 icon.src = data[key].icon;
+                icon.className = "champion-icon";
                 name.innerText = data[key].name;
                 newChampion.appendChild(icon);
                 newChampion.appendChild(name);
@@ -138,6 +136,15 @@ function grabChampionDetails(championKey) {
             }
         })
         .catch(error => console.log(error))
+    ResetSearchChampions();
+}
+
+function ResetSearchChampions() {
+    document.querySelector("input#searchChampions").value = "";
+    const Champions = document.querySelectorAll("div.champion-icon");
+    Champions.forEach(champion => {
+        champion.style.display = "flex";
+    })
 }
 
 function fillBaseStats() {
@@ -361,14 +368,6 @@ function fillAbilitiesDefault() {
 }
 
 function styleAbilities(element) {
-    /*
-    element.forEach(p => {
-        let text = p.textContent;
-        const regex = /(Innate(?:\s*-\s*[\w\s]+)?\s*:|Active(?:\s*-\s*[\w\s]+)?\s*:|Passive(?:\s*-\s*[\w\s]+)?\s*:|Recast(?:\s*-\s*[\w\s]+)?\s*:|Toggle(?:\s*-\s*[\w\s]+)?\s*:|Pow-Pow(?:\s*-\s*[\w\s]+)?\s*:|Fishbones(?:\s*-\s*[\w\s]+)?\s*:|First Cast(?:\s*-\s*[\w\s]+)?\s*:|Second Cast(?:\s*-\s*[\w\s]+)?\s*:|Third Cast(?:\s*-\s*[\w\s]+)?\s*:)/g;
-        const modifiedContent = text.replace(regex, '\n$&');
-        p.innerHTML = modifiedContent.replace(regex,
-            '<br><span class="innate-text">$&</span>');
-    })*/
     element.forEach(p => {
         let text = p.textContent;
         const regex = /(Innate(?:\s*-\s*[\w\s]+)?\s*:|Active(?:\s*-\s*[\w\s]+)?\s*:|Passive(?:\s*-\s*[\w\s]+)?\s*:|Recast(?:\s*-\s*[\w\s]+)?\s*:|Toggle(?:\s*-\s*[\w\s]+)?\s*:|Pow-Pow(?:\s*-\s*[\w\s]+)?\s*:|Fishbones(?:\s*-\s*[\w\s]+)?\s*:|First Cast(?:\s*-\s*[\w\s]+)?\s*:|Second Cast(?:\s*-\s*[\w\s]+)?\s*:|Third Cast(?:\s*-\s*[\w\s]+)?\s*:|Passive - Soul-Marked(?:\s*-\s*[\w\s]+)?\s*:)/g;
@@ -392,5 +391,13 @@ function styleAbilities(element) {
     })
 }
 
-document.querySelector("div#champion-info-spells").style.display = "none";
-ChampionSelect.style.display = "none";
+document.querySelector("input#searchChampions").addEventListener("input", () => {
+    const Champions = document.querySelectorAll("div.champion-icon");
+    Champions.forEach(champion => {
+        if (champion.dataset.name.toLowerCase().includes(document.querySelector("input#searchChampions").value.toLowerCase())) {
+            champion.style.display = "flex";
+        } else {
+            champion.style.display = "none";
+        }
+    })
+})
