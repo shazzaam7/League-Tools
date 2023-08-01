@@ -4,6 +4,7 @@ body {
   max-height: 50vh;
   margin-left: auto;
   margin-right: auto;
+  background-color: rgb(19, 19, 19);
 }
 
 #loading-screen {
@@ -53,11 +54,13 @@ main {
 }
 
 div#header {
-  border: 2px black solid;
+  border: 2px solid #f3f3f3;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  background-color: rgb(19, 19, 19);
+  color: wheat;
 }
 
 div#header > a {
@@ -77,14 +80,34 @@ div#champion-select > select {
   margin-bottom: 10px;
 }
 
+div#champion-selector-search {
+  display: flex;
+  flex-direction: row;
+  border: 2px solid #f3f3f3;
+  overflow-y: hidden;
+  width: 75%;
+  height: 500px;
+  margin-bottom: 20px;
+}
+
+input#searchChampions {
+  background-color: rgb(19, 19, 19);
+  font-size: 20px;
+  color: white;
+  text-align: center;
+  max-height: 30px;
+  width: 100%;
+  justify-self: center;
+}
+
 div#champion-selector {
   display: grid;
   grid-template-columns: repeat(8, 1fr);
-  border: 2px solid black;
-  overflow-y: scroll;
   height: 500px;
-  width: 75%;
+  width: 100%;
   margin-bottom: 20px;
+  justify-self: center;
+  overflow-y: scroll;
 }
 
 div.champion-icon {
@@ -100,8 +123,8 @@ div.champion-icon > p {
 }
 
 div.champion-icon > img {
-  max-height: 75%;
-  max-width: 75%;
+  max-height: 64px;
+  max-width: 64px;
   align-self: center;
   border: 5px solid black;
 }
@@ -109,11 +132,18 @@ div.champion-icon > img {
 div#item-selector {
   display: flex;
   flex-direction: row;
-  border: 2px solid black;
+  border: 2px solid #f3f3f3;
   overflow-y: scroll;
   width: 75%;
   height: 500px;
   margin-bottom: 20px;
+}
+
+input#searchItems {
+  background-color: rgb(19, 19, 19);
+  font-size: 20px;
+  color: white;
+  text-align: center;
 }
 
 div.item-icons {
@@ -155,7 +185,8 @@ div#champion-info-spells {
 
 div#champion-info {
   grid-area: info;
-  border: 2px black solid;
+  border: 2px #f3f3f3 solid;
+  color: white;
 }
 
 div#champion-loading {
@@ -173,7 +204,7 @@ img#champion-loading {
 }
 
 div.champion-name {
-  border: 2px black solid;
+  border: 2px #f3f3f3 solid;
   display: flex;
   flex-direction: column;
   margin: 0;
@@ -215,7 +246,7 @@ div#base-stats {
 }
 
 div.column1 {
-  border: 2px black solid;
+  border: 2px #f3f3f3 solid;
   grid-area: health;
   display: flex;
   justify-content: center;
@@ -232,7 +263,7 @@ div.column1 > p {
 
 div.column2 {
   grid-area: resource;
-  border: 2px black solid;
+  border: 2px #f3f3f3 solid;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -247,20 +278,23 @@ div.column2 > p {
 
 div#champion-spells {
   grid-area: spells;
-  border: 2px black solid;
+  border: 2px #f3f3f3 solid;
 }
 
 div#champion-spells > h2 {
   text-align: center;
+  color: white;
 }
 
 p.ability-name {
   margin-left: 10px;
+  color: white;
 }
 
 div.ability {
   display: flex;
   flex-direction: row;
+  color: white;
 }
 
 div.ability > img {
@@ -281,14 +315,14 @@ div.ability-effect {
 }
 
 .innate-text {
-  color: blue;
+  color: red;
   font-weight: bold;
   font-size: 18px;
   margin-top: 10px;
 }
 
 .extra-text {
-  color: red;
+  color: darkred;
   font-weight: bold;
   font-size: 18px;
   margin-top: 10px;
@@ -304,6 +338,7 @@ div.notes {
   flex-direction: row;
   margin-left: 10px;
   margin-right: 10px;
+  color: white;
 }
 
 div.notes > button {
@@ -323,10 +358,17 @@ div.R {
 }
 
 div#item-info {
-  border: 2px solid black;
+  border: 2px solid #f3f3f3;
   width: 75%;
   justify-self: center;
   display: grid;
+  background-color: rgb(19, 19, 19);
+  color: white;
+}
+
+div#item-info > div {
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 div#item-icon-name-cost {
@@ -351,4 +393,17 @@ div#item-cost > img {
   width: 20px;
   height: 20px;
   transform: translate(0%, 20%);
+}
+
+ul.item-stats {
+  list-style-type: none;
+}
+
+img#stat-icon {
+  width: 16px;
+  height: 16px;
+}
+
+div#active-effects > p {
+  margin-left: 20px;
 }

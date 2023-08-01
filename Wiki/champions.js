@@ -1,4 +1,5 @@
 const ChampionSelect = document.querySelector("div#champion-selector");
+
 let currentChampion;
 let resources = ["MANA", "ENERGY", "RAGE", "FURY"];
 
@@ -14,7 +15,9 @@ function grabAllChampions() {
                 let name = document.createElement("p");
                 newChampion.className = "champion-icon";
                 newChampion.value = key;
+                newChampion.setAttribute("data-name", data[key].name);
                 icon.src = data[key].icon;
+                icon.className = "champion-icon";
                 name.innerText = data[key].name;
                 newChampion.appendChild(icon);
                 newChampion.appendChild(name);
@@ -378,3 +381,14 @@ function styleAbilities(element) {
         p.innerHTML = modifiedContent;
     })
 }
+
+document.querySelector("input#searchChampions").addEventListener("input", () => {
+    const Champions = document.querySelectorAll("div.champion-icon");
+    Champions.forEach(champion => {
+        if (champion.dataset.name.toLowerCase().includes(document.querySelector("input#searchChampions").value.toLowerCase())) {
+            champion.style.display = "flex";
+        } else {
+            champion.style.display = "none";
+        }
+    })
+})
