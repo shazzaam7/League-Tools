@@ -38,4 +38,5 @@ document.querySelector("div#champion-info-spells").style.display = "none";
 document.querySelector("div#champion-selector-search").style.display = "none";
 document.querySelector("div#item-info").style.display = "none";
 document.querySelector("input#searchItems").value = "";
+document.querySelector("input#searchChampions").value = "";
 grabLatestVersion();

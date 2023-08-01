@@ -136,6 +136,15 @@ function grabChampionDetails(championKey) {
             }
         })
         .catch(error => console.log(error))
+    ResetSearchChampions();
+}
+
+function ResetSearchChampions() {
+    document.querySelector("input#searchChampions").value = "";
+    const Champions = document.querySelectorAll("div.champion-icon");
+    Champions.forEach(champion => {
+        champion.style.display = "flex";
+    })
 }
 
 function fillBaseStats() {

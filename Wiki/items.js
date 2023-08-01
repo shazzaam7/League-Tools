@@ -183,6 +183,7 @@ function grabItemDetails(itemKey) {
             }
         })
         .catch(error => console.log(error));
+    ResetSearchItems();
 }
 
 function formatEffects(effect) {
@@ -405,6 +406,15 @@ Energized attacks bounce their additional effect to the closest target within 50
     effect = effect.replace(/cr\|icononly = true/g, '');
 
     return effect;
+}
+
+function ResetSearchItems() {
+    const icons = document.querySelectorAll("img.item-icon");
+    document.querySelector("input#searchItems").value = "";
+    icons.forEach(icon => {
+        icon.removeAttribute("hidden");
+        icon.setAttribute("show", "");
+    })
 }
 
 document.querySelector("input#searchItems").addEventListener("input", () => {
