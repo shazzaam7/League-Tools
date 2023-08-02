@@ -2,6 +2,7 @@ const ChampionSelect = document.querySelector("div#champion-selector");
 
 let currentChampion;
 let resources = ["MANA", "ENERGY", "RAGE", "FURY"];
+let lowerBound, upperBound;
 
 function grabAllChampions() {
     document.getElementById('loading-screen').style.display = 'flex';
@@ -42,10 +43,17 @@ function grabChampionDetails(championKey) {
         .then(data => {
             currentChampion = data;
             switch (currentChampion.key) {
-                /*case "Aatrox":
-                    console.log("Special Case!");
+                case "Aatrox":
+                    if (document.querySelector("select#champion-level").selectedIndex == 0) {
+                        DefaultfillBaseStats();
+                        fillAbilitiesDefault();
+                    } else {
+                        LevelFillBaseStats(document.querySelector("select#champion-level").selectedIndex);
+                        fillAbilitiesDefault();
+                    }
+                    AatroxAbilities();
                     break;
-                case "Akali":
+                /*case "Akali":
                     console.log("Special Case!");
                     break;
                 case "Aphelios":
@@ -130,8 +138,13 @@ function grabChampionDetails(championKey) {
                     console.log("Special Case!");
                     break;*/
                 default:
-                    fillBaseStats();
-                    fillAbilitiesDefault();
+                    if (document.querySelector("select#champion-level").selectedIndex == 0) {
+                        DefaultfillBaseStats();
+                        fillAbilitiesDefault();
+                    } else {
+                        LevelFillBaseStats(document.querySelector("select#champion-level").selectedIndex);
+                        fillAbilitiesDefault();
+                    }
                     break;
             }
         })
@@ -139,45 +152,68 @@ function grabChampionDetails(championKey) {
     ResetSearchChampions();
 }
 
-function ResetSearchChampions() {
-    document.querySelector("input#searchChampions").value = "";
-    const Champions = document.querySelectorAll("div.champion-icon");
-    Champions.forEach(champion => {
-        champion.style.display = "flex";
-    })
-}
-
-function fillBaseStats() {
+function DefaultfillBaseStats() {
     document.querySelector("img#champion-loading").src = currentChampion.skins[0].loadScreenPath;
     document.querySelector("span#champion-name").innerText = currentChampion.name.toUpperCase();
     document.querySelector("span#champion-title").innerText = currentChampion.title.toUpperCase();
-    document.querySelector("p#health").innerText = currentChampion.stats.health.flat + ` (+ ${currentChampion.stats.health.perLevel} per Level)`;
+    document.querySelector("p#health").innerText = roundNumbers(currentChampion.stats.health.flat) + ` (+ ${roundNumbers(currentChampion.stats.health.perLevel)} per Level)`;
     if (resources.indexOf(currentChampion.resource) < 0) {
         document.querySelector("p#resource-type").innerText = "RESOURCE";
         document.querySelector("p#resource").innerText = "N/A";
     } else {
         document.querySelector("p#resource-type").innerText = currentChampion.resource;
-        document.querySelector("p#resource").innerText = currentChampion.stats.mana.flat + ` (+  ${currentChampion.stats.mana.perLevel} per Level)`;
+        document.querySelector("p#resource").innerText = roundNumbers(currentChampion.stats.mana.flat) + ` (+  ${roundNumbers(currentChampion.stats.mana.perLevel)} per Level)`;
     };
-    document.querySelector("p#healthregen").innerText = currentChampion.stats.healthRegen.flat + ` (+ ${currentChampion.stats.healthRegen.perLevel} per Level)`;
+    document.querySelector("p#healthregen").innerText = roundNumbers(currentChampion.stats.healthRegen.flat) + ` (+ ${currentChampion.stats.healthRegen.perLevel} per Level)`;
     if (currentChampion.stats.manaRegen.flat > 0) {
-        document.querySelector("p#resourceregen").innerText = currentChampion.stats.manaRegen.flat + ` (+ ${currentChampion.stats.manaRegen.perLevel} per Level)`;
+        document.querySelector("p#resourceregen").innerText = currentChampion.stats.manaRegen.flat + ` (+ ${roundNumbers(currentChampion.stats.manaRegen.perLevel)} per Level)`;
     } else {
         document.querySelector("p#resourceregen").innerText = "0";
     }
-    document.querySelector("p#armor").innerText = currentChampion.stats.armor.flat + ` (+ ${currentChampion.stats.armor.perLevel} per Level)`;
-    document.querySelector("p#attackdamage").innerText = currentChampion.stats.attackDamage.flat + ` (+ ${currentChampion.stats.attackDamage.perLevel} per Level)`;
-    document.querySelector("p#magicresist").innerText = currentChampion.stats.magicResistance.flat + ` (+ ${currentChampion.stats.magicResistance.perLevel} per Level)`;
-    document.querySelector("p#critdamage").innerText = currentChampion.stats.criticalStrikeDamage.flat;
+    document.querySelector("p#armor").innerText = roundNumbers(currentChampion.stats.armor.flat) + ` (+ ${roundNumbers(currentChampion.stats.armor.perLevel)} per Level)`;
+    document.querySelector("p#attackdamage").innerText = roundNumbers(currentChampion.stats.attackDamage.flat) + ` (+ ${roundNumbers(currentChampion.stats.attackDamage.perLevel)} per Level)`;
+    document.querySelector("p#magicresist").innerText = roundNumbers(currentChampion.stats.magicResistance.flat) + ` (+ ${roundNumbers(currentChampion.stats.magicResistance.perLevel)} per Level)`;
+    document.querySelector("p#critdamage").innerText = roundNumbers(currentChampion.stats.criticalStrikeDamage.flat) + "%";
+    document.querySelector("p#movementspeed").innerText = roundNumbers(currentChampion.stats.movespeed.flat);
+    document.querySelector("p#attackrange").innerText = roundNumbers(currentChampion.stats.attackRange.flat);
+    document.querySelector("p#baseattackspeed").innerText = roundNumbers(currentChampion.stats.attackSpeed.flat);
+    document.querySelector("p#attackspeedratio").innerText = roundNumbers(currentChampion.stats.attackSpeedRatio.flat);
+    document.querySelector("p#bonusas").innerText = `${roundNumbers(currentChampion.stats.attackSpeed.perLevel)}% per Level`;
+    document.querySelector("p#gameplayradius").innerText = roundNumbers(currentChampion.stats.gameplayRadius.flat);
+    document.querySelector("p#selectionradius").innerText = roundNumbers(currentChampion.stats.selectionRadius.flat);
+    document.querySelector("p#pathingradius").innerText = roundNumbers(currentChampion.stats.pathingRadius.flat);
+    document.querySelector("p#acqradius").innerText = roundNumbers(currentChampion.stats.acquisitionRadius.flat);
+}
+
+function LevelFillBaseStats(Level) {
+    let f = (Level - 1) * (.7025 + (.0175 * (Level - 1)));
+    document.querySelector("img#champion-loading").src = currentChampion.skins[0].loadScreenPath;
+    document.querySelector("span#champion-name").innerText = currentChampion.name.toUpperCase();
+    document.querySelector("span#champion-title").innerText = currentChampion.title.toUpperCase();
+    document.querySelector("p#critdamage").innerText = currentChampion.stats.criticalStrikeDamage.flat + "%";
     document.querySelector("p#movementspeed").innerText = currentChampion.stats.movespeed.flat;
     document.querySelector("p#attackrange").innerText = currentChampion.stats.attackRange.flat;
     document.querySelector("p#baseattackspeed").innerText = currentChampion.stats.attackSpeed.flat;
-    document.querySelector("p#attackspeedratio").innerText = currentChampion.stats.attackSpeedRatio.flat.toFixed(3);
-    document.querySelector("p#bonusas").innerText = `${currentChampion.stats.attackSpeed.perLevel}% per Level`;
-    document.querySelector("p#gameplayradius").innerText = currentChampion.stats.gameplayRadius.flat;
-    document.querySelector("p#selectionradius").innerText = currentChampion.stats.selectionRadius.flat;
-    document.querySelector("p#pathingradius").innerText = currentChampion.stats.pathingRadius.flat;
-    document.querySelector("p#acqradius").innerText = currentChampion.stats.acquisitionRadius.flat;
+    document.querySelector("p#attackspeedratio").innerText = roundNumbers(currentChampion.stats.attackSpeedRatio.flat);
+    document.querySelector("p#bonusas").innerText = roundNumbers(currentChampion.stats.attackSpeed.perLevel * f) + "%";
+    document.querySelector("p#gameplayradius").innerText = roundNumbers(currentChampion.stats.gameplayRadius.flat);
+    document.querySelector("p#selectionradius").innerText = roundNumbers(currentChampion.stats.selectionRadius.flat);
+    document.querySelector("p#pathingradius").innerText = roundNumbers(currentChampion.stats.pathingRadius.flat);
+    document.querySelector("p#acqradius").innerText = roundNumbers(currentChampion.stats.acquisitionRadius.flat);
+    document.querySelector("p#health").innerText = roundNumbers(currentChampion.stats.health.flat + (currentChampion.stats.health.perLevel * f));
+    document.querySelector("p#healthregen").innerText = roundNumbers(currentChampion.stats.healthRegen.flat + (currentChampion.stats.healthRegen.perLevel * f));
+    document.querySelector("p#armor").innerText = roundNumbers(currentChampion.stats.armor.flat + (currentChampion.stats.armor.perLevel * f));
+    document.querySelector("p#attackdamage").innerText = roundNumbers(currentChampion.stats.attackDamage.flat + (currentChampion.stats.attackDamage.perLevel * f));
+    document.querySelector("p#magicresist").innerText = roundNumbers(currentChampion.stats.magicResistance.flat + (currentChampion.stats.magicResistance.perLevel * f));
+    if (resources.indexOf(currentChampion.resource) < 0) {
+        document.querySelector("p#resource-type").innerText = "RESOURCE";
+        document.querySelector("p#resource").innerText = "N/A";
+        document.querySelector("p#resourceregen").innerText = 0;
+    } else {
+        document.querySelector("p#resource-type").innerText = currentChampion.resource;
+        document.querySelector("p#resource").innerText = roundNumbers(currentChampion.stats.mana.flat + (currentChampion.stats.mana.perLevel * f));
+        document.querySelector("p#resourceregen").innerText = roundNumbers(currentChampion.stats.manaRegen.flat + (currentChampion.stats.manaRegen.perLevel * f));
+    };
 }
 
 function fillAbilitiesDefault() {
@@ -197,6 +233,7 @@ function fillAbilitiesDefault() {
         currentChampion.abilities.P[index].effects.forEach(effect => {
             let newItem = document.createElement('div');
             newItem.id = "passive-effect";
+            styleEffect(effect.description);
             newItem.innerText = effect.description;
             document.querySelector(`div#passive-effect${index + 1}`).appendChild(newItem);
         })
@@ -367,6 +404,70 @@ function fillAbilitiesDefault() {
     }
 }
 
+// Champion Abilities Fit
+function AatroxAbilities() {
+    // Passive
+    for (let index = currentChampion.abilities.P.length; index < 6; index++) {
+        document.querySelector(`div#champion-passive${index + 1}`).removeAttribute("show");
+        document.querySelector(`div#champion-passive${index + 1}`).setAttribute("hidden", "");
+    }
+    for (let index = 0; index < currentChampion.abilities.P.length; index++) {
+        document.querySelector(`div#champion-passive${index + 1}`).removeAttribute("hidden");
+        document.querySelector(`div#champion-passive${index + 1}`).setAttribute("show", "");
+        document.querySelector(`p#passive-name${index + 1}`).innerText = currentChampion.abilities.P[index].name;
+        document.querySelector(`div#passive-effect${index + 1}`).innerHTML = "";
+        document.querySelector(`img#passive-icon${index + 1}`).removeAttribute("hidden");
+        document.querySelector(`img#passive-icon${index + 1}`).setAttribute("show", "");
+        document.querySelector(`img#passive-icon${index + 1}`).src = currentChampion.abilities.P[index].icon;
+        currentChampion.abilities.P[index].effects.forEach(effect => {
+            let newItem = document.createElement('div');
+            newItem.id = "passive-effect";
+            styleEffect(effect.description);
+            newItem.innerText = effect.description;
+            document.querySelector(`div#passive-effect${index + 1}`).appendChild(newItem);
+        })
+        styleAbilities(document.querySelectorAll(`div#passive-effect${index + 1}`));
+        if (currentChampion.abilities.P[index].notes != "No additional details.") {
+            document.querySelector(`div#passive-notes${index + 1}`).removeAttribute("hidden");
+            document.querySelector(`p#passive-notes${index + 1}`).innerText = currentChampion.abilities.P[index].notes;
+        } else {
+            document.querySelector(`div#passive-notes${index + 1}`).setAttribute("hidden", "");
+            document.querySelector(`p#passive-notes${index + 1}`).innerText = "";
+        }
+        document.getElementById(`passive-tab-hide${index + 1}`).addEventListener("click", () => {
+            document.getElementById(`passive-details${index + 1}`).removeAttribute("show");
+            document.getElementById(`passive-details${index + 1}`).setAttribute("hidden", "");
+        });
+        document.getElementById(`passive-tab-details${index + 1}`).addEventListener("click", () => {
+            document.getElementById(`passive-details${index + 1}`).removeAttribute("hidden");
+            document.getElementById(`passive-details${index + 1}`).setAttribute("show", "");
+        })
+    }
+
+    // Q
+
+
+    // W
+
+
+    // E
+
+
+    // R
+}
+
+function styleEffect(effectDescription) {
+    const match = effectDescription.match(/(\d+)% − (\d+)% \(based on level\)/);
+    if (effectDescription.match(/(\d+)% − (\d+)% \(based on level\)/)) {
+        if (match[1] !== undefined && match[2] !== undefined) {
+            lowerBound = parseInt(match[1]);
+            upperBound = parseInt(match[2]);
+        }
+        console.log("Lower Bound:", lowerBound); // Output: 4
+        console.log("Upper Bound:", upperBound); // Output: 12
+    }
+}
+
 function styleAbilities(element) {
     element.forEach(p => {
         let text = p.textContent;
@@ -401,3 +502,21 @@ document.querySelector("input#searchChampions").addEventListener("input", () => 
         }
     })
 })
+
+function ResetSearchChampions() {
+    document.querySelector("input#searchChampions").value = "";
+    const Champions = document.querySelectorAll("div.champion-icon");
+    Champions.forEach(champion => {
+        champion.style.display = "flex";
+    })
+}
+
+document.querySelector("select#champion-level").addEventListener("change", () => {
+    if (currentChampion != "") {
+        if (document.querySelector("select#champion-level").selectedIndex == 0) {
+            DefaultfillBaseStats()
+        } else {
+            LevelFillBaseStats(document.querySelector("select#champion-level").selectedIndex);
+        }
+    }
+});
