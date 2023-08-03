@@ -181,12 +181,15 @@ div.info {
 div#champion-info-spells {
   display: grid;
   grid-template-areas: "info spells";
+  grid-template-columns: 35% 65%;
 }
 
 div#champion-info {
   grid-area: info;
   border: 2px #f3f3f3 solid;
   color: white;
+  display: flex;
+  flex-direction: column;
 }
 
 div#champion-loading {
@@ -196,11 +199,15 @@ div#champion-loading {
 }
 
 img#champion-loading {
-  width: 60%;
-  height: 40%;
-  max-width: 185px;
+  max-width: 180px;
   max-height: 320px;
   align-self: center;
+}
+
+div#champion-level {
+  justify-self: center;
+  align-self: center;
+  text-align: center;
 }
 
 div.champion-name {
