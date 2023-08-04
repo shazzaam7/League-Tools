@@ -242,8 +242,11 @@ div#champion-stats {
 
 div#base-stats-header {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-bottom: 5%;
+  margin-top: 1%;
 }
 
 div#base-stats {
@@ -291,6 +294,39 @@ div#champion-spells {
 div#champion-spells > h2 {
   text-align: center;
   color: white;
+}
+
+div.spell-header {
+  display: flex;
+  color: white;
+  flex-direction: row;
+  margin-top: 0px;
+}
+
+div.spell-name {
+  align-self: center;
+  justify-self: start;
+}
+
+div.spell-stats {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: start;
+  justify-self: flex-start;
+  align-self: flex-start;
+  margin-left: 5%;
+  flex: 1;
+}
+
+div.spell-stats > div {
+  margin-left: 0px;
+  margin-right: 5%;
+}
+
+div.spell-stats > div > p {
+  margin-top: 0px;
+  margin-bottom: 2%;
 }
 
 p.ability-name {
