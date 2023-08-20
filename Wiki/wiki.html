@@ -25,44 +25,6 @@
           <input type="text" id="searchChampions" />
           <div id="champion-selector"></div>
         </div>
-        <div id="item-selector">
-          <input type="text" id="searchItems" />
-          <div id="items">
-            <span class="item-class">Starter</span>
-            <hr />
-            <div id="starter-items" class="item-icons"></div>
-          </div>
-          <div id="items">
-            <span class="item-class">Basic</span>
-            <hr />
-            <div id="basic-items" class="item-icons"></div>
-          </div>
-          <div id="items">
-            <span class="item-class">Boots</span>
-            <hr />
-            <div id="boots" class="item-icons"></div>
-          </div>
-          <div id="items">
-            <span class="item-class">Epic</span>
-            <hr />
-            <div id="epic-items" class="item-icons"></div>
-          </div>
-          <div id="items">
-            <span class="item-class">Legendary</span>
-            <hr />
-            <div id="legendary-items" class="item-icons"></div>
-          </div>
-          <div id="items">
-            <span class="item-class">Mythic</span>
-            <hr />
-            <div id="mythic-items" class="item-icons"></div>
-          </div>
-          <div id="items">
-            <span class="item-class">Ornnaments</span>
-            <hr />
-            <div id="ornn-items" class="item-icons"></div>
-          </div>
-        </div>
       </div>
       <div id="champion-info-spells" class="info">
         <div id="champion-info">
@@ -198,6 +160,73 @@
               </div>
             </div>
           </div>
+        </div>
+        <div class="item-selector-info">
+          <div id="item-selector">
+            <input type="text" id="searchItems" />
+            <div id="items">
+              <span class="item-class">Starter</span>
+              <hr />
+              <div id="starter-items" class="item-icons"></div>
+            </div>
+            <div id="items">
+              <span class="item-class">Basic</span>
+              <hr />
+              <div id="basic-items" class="item-icons"></div>
+            </div>
+            <div id="items">
+              <span class="item-class">Boots</span>
+              <hr />
+              <div id="boots" class="item-icons"></div>
+            </div>
+            <div id="items">
+              <span class="item-class">Epic</span>
+              <hr />
+              <div id="epic-items" class="item-icons"></div>
+            </div>
+            <div id="items">
+              <span class="item-class">Legendary</span>
+              <hr />
+              <div id="legendary-items" class="item-icons"></div>
+            </div>
+            <div id="items">
+              <span class="item-class">Mythic</span>
+              <hr />
+              <div id="mythic-items" class="item-icons"></div>
+            </div>
+            <div id="items">
+              <span class="item-class">Ornnaments</span>
+              <hr />
+              <div id="ornn-items" class="item-icons"></div>
+            </div>
+          </div>
+        </div>
+        <div id="item-info" class="info-popout">
+          <div id="item-recipe">
+            <div id="main-item"></div>
+            <div id="components"></div>
+          </div>
+          <br />
+          <div id="item-icon-name-cost">
+            <img src="" alt="item-icon" id="item-icon" />
+            <div id="item-name-cost">
+              <span id="item-name">Item Name</span>
+              <div id="item-cost">
+                <img
+                  src="https://raw.communitydragon.org/latest/game/assets/ux/floatingtext/goldicon.png"
+                />
+                <span id="item-cost">Item Cost</span>
+              </div>
+            </div>
+          </div>
+          <br />
+          <div id="item-stats"></div>
+          <br />
+          <div id="item-effects">
+            <div id="active-effects"></div>
+            <div id="passive-effects"></div>
+          </div>
+          <br />
         </div>
         <div id="champion-spells">
           <h2>
@@ -720,33 +749,6 @@
             </div>
           </div>
         </div>
-      </div>
-      <div id="item-info" class="info">
-        <div id="item-recipe">
-          <div id="main-item"></div>
-          <div id="components"></div>
-        </div>
-        <br />
-        <div id="item-icon-name-cost">
-          <img src="" alt="item-icon" id="item-icon" />
-          <div id="item-name-cost">
-            <span id="item-name">Item Name</span>
-            <div id="item-cost">
-              <img
-                src="https://raw.communitydragon.org/latest/game/assets/ux/floatingtext/goldicon.png"
-              />
-              <span id="item-cost">Item Cost</span>
-            </div>
-          </div>
-        </div>
-        <br />
-        <div id="item-stats"></div>
-        <br />
-        <div id="item-effects">
-          <div id="active-effects"></div>
-          <div id="passive-effects"></div>
-        </div>
-        <br />
       </div>
     </main>
     <script src="wiki.js"></script>

@@ -129,14 +129,20 @@ div.champion-icon > img {
   border: 5px solid black;
 }
 
+div.item-selector-info {
+  grid-area: items;
+  position: relative;
+  overflow: hidden;
+}
+
 div#item-selector {
   display: flex;
   flex-direction: row;
   border: 2px solid #f3f3f3;
   overflow-y: scroll;
-  width: 75%;
   height: 500px;
   margin-bottom: 20px;
+  color: white;
 }
 
 input#searchItems {
@@ -174,13 +180,44 @@ span.item-class {
   text-align: center;
 }
 
+img#item-icon {
+  position: relative;
+  display: inline-block;
+  padding: 10px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+
+img#item-icon:hover .item-info {
+  display: block;
+  transform: translate(
+    10px,
+    -10px
+  ); /* Adjust values for the desired position */
+  opacity: 1;
+}
+
+div.info-popout {
+  position: absolute;
+  display: none;
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, opacity 0.2s;
+}
+
 div.info {
   grid-area: infospells;
 }
 
 div#champion-info-spells {
   display: grid;
-  grid-template-areas: "info spells";
+  grid-template-areas:
+    "info items"
+    "info build"
+    "spells spells";
   grid-template-columns: 35% 65%;
 }
 

@@ -53,12 +53,10 @@ function grabItemDetails(itemKey) {
     document.querySelector("div#active-effects").innerHTML = "";
     document.querySelector("div#passive-effects").innerHTML = "";
     document.querySelector("div#item-stats").innerHTML = "";
-
     fetch(`https://shazzaam7.github.io/LoL-DDragon/Items/${itemKey}.json`)
         .then(res => res.json())
         .then(data => {
             console.log(data);
-            document.querySelector("div#item-info").style.display = "grid";
             document.querySelector("img#item-icon").src = data.icon;
             document.querySelector("span#item-name").innerHTML = data.name;
             document.querySelector("span#item-cost").innerHTML = data.shop.prices.total;

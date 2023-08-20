@@ -25,6 +25,8 @@ function grabAllChampions() {
                 newChampion.addEventListener("click", () => {
                     document.getElementById('loading-screen').style.display = 'flex';
                     grabChampionDetails(newChampion.value);
+                    grabAllItems();
+                    document.querySelector("div#item-selector").style.display = "grid";
                     document.getElementById('loading-screen').style.display = 'none';
                     document.querySelector("div#champion-info-spells").style.display = "grid";
                     document.querySelector("div#champion-info-spells").scrollIntoView({ behavior: "smooth" });
@@ -238,6 +240,7 @@ function fillAbilitiesDefault() {
             newItem.innerText = effect.description;
             document.querySelector(`div#passive-effect${index + 1}`).appendChild(newItem);
         });
+        /*
         document.querySelector(`div#passive-stats${index + 1}`).innerHTML = "";
         for (let attribute in currentChampion.abilities.P[index]) {
             if (currentChampion.abilities.P[0][attribute] != null) {
@@ -266,7 +269,7 @@ function fillAbilitiesDefault() {
                         break;
                 }
             }
-        }
+        }*/
         styleAbilities(document.querySelectorAll(`div#passive-effect${index + 1}`));
         if (currentChampion.abilities.P[index].notes != "No additional details.") {
             document.querySelector(`div#passive-notes${index + 1}`).removeAttribute("hidden");
