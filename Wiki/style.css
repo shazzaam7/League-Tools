@@ -1,18 +1,15 @@
-/*
-*  Body
-*/
+/*Body*/
 body {
   margin: auto;
   max-width: 100%;
   min-height: 100vh;
   background-color: rgb(5, 5, 37);
+  display: flex;
+  flex-direction: column;
 }
 
-/*
-*  Loading DIV
-*  This happens when something happens.
-*/
-#loading {
+/*Loading - This happens when something happens.*/
+div#loading {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -27,10 +24,8 @@ body {
   z-index: 9999;
 }
 
-/*
-* Loading Circle DIV
-*/
-.loading-circle {
+/*Loading Circle*/
+div.loading-circle {
   border: 5px solid #f3f3f3;
   border-top: 5px solid #3498db;
   border-radius: 50%;
@@ -48,20 +43,15 @@ body {
   }
 }
 
-/*
-* Paragraph inside of Loading DIV
-*/
-#loading > p {
+/*Paragraph inside of Loading*/
+div#loading > p {
   color: #fff;
   font-size: 20px;
   margin-top: 20px;
 }
 
-/*
-* Header DIV
-* This is where title and patch version go
-*/
-#header {
+/*Header - This is where title and patch version go*/
+div#header {
   background-color: rgb(19, 19, 19);
   min-height: 6rem;
   display: flex;
@@ -70,25 +60,74 @@ body {
   justify-content: center;
 }
 
-#header>p {
+div#header>p {
   color: rgb(231, 222, 222);
   margin: 10px 0px 0px 0px;
 }
 
-/*
-* Title PARAGRAPH
-* This is where the title goes
-*/
+/*Title - This is where the title goes*/
 p#title {
   margin-top: 0px;
   font-size: 30px;
 }
 
-/*
-* Patch Version PARAGRAPH
-* This is where the patch version goes
-*/
+/* Patch Version - his is where the patch version goes*/
 p#patch-version {
   margin-top: 12px;
   font-size: 20px;
+}
+
+/*Champion Select - This is where champions will go*/
+div.champion-select {
+  align-self: center;
+  border: 2px solid white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 50rem;
+  overflow-y: scroll;
+  height: 40rem;
+}
+
+/*Search Champions - Used for searching champions*/
+input#searchChampions {
+  background-color: rgb(19, 19, 19);
+  font-size: 20px;
+  color: white;
+  background-color: transparent;
+  text-align: center;
+  max-height: 30px;
+  width: 99.2%;
+  border: 1px solid wheat;
+  justify-self: center;
+}
+
+/*Champions - Used to store all of champions*/
+div#champions {
+  display: grid;
+  grid-template-columns: repeat(6, 8rem);
+  max-height: 40rem;
+  margin-top: 10px;
+}
+
+/*Champion - Stores icon and name of a champion*/
+div.champion {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+/*Champion Icon - Icon of the champion*/
+img.champion-icon {
+  max-height: 64px;
+  max-width: 64px;
+  align-self: center;
+  border: 5px solid black;
+}
+
+/* Champion Name*/
+p.champion-name {
+  margin: 5px 0px 0px 0px;
+  text-align: center;
+  color: white;
 }
