@@ -8,7 +8,7 @@ function grabLatestVersion() {
         .then(res => res.json())
         .then(data => {
             document.querySelector("p#patch-version").innerText = `Patch: ${parseFloat(data[0]).toFixed(2)}`;
-            document.getElementById('loading').style.display = 'none';
+            getAllChampions();
         })
         .catch(error => console.log(error))
 };
@@ -30,3 +30,4 @@ function roundNumbers(number) {
 }
 
 grabLatestVersion();
+document.querySelector("input#searchChampions").value = "";
