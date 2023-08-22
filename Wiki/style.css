@@ -1,15 +1,13 @@
-/*Body*/
 body {
-  margin: auto;
-  max-width: 100%;
-  min-height: 100vh;
-  background-color: rgb(5, 5, 37);
-  display: flex;
-  flex-direction: column;
+  min-width: 70%;
+  max-width: 900px;
+  max-height: 50vh;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: rgb(19, 19, 19);
 }
 
-/*Loading - This happens when something happens.*/
-div#loading {
+#loading-screen {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -24,8 +22,7 @@ div#loading {
   z-index: 9999;
 }
 
-/*Loading Circle*/
-div.loading-circle {
+.loader {
   border: 5px solid #f3f3f3;
   border-top: 5px solid #3498db;
   border-radius: 50%;
@@ -43,91 +40,450 @@ div.loading-circle {
   }
 }
 
-/*Paragraph inside of Loading*/
-div#loading > p {
+#loading-screen > p {
   color: #fff;
   font-size: 20px;
   margin-top: 20px;
 }
 
-/*Header - This is where title and patch version go*/
+main {
+  display: grid;
+  grid-template-areas:
+    "select"
+    "infospells";
+}
+
 div#header {
-  background-color: rgb(19, 19, 19);
-  min-height: 6rem;
+  border: 2px solid #f3f3f3;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-}
-
-div#header>p {
-  color: rgb(231, 222, 222);
-  margin: 10px 0px 0px 0px;
-}
-
-/*Title - This is where the title goes*/
-p#title {
-  margin-top: 0px;
-  font-size: 30px;
-}
-
-/* Patch Version - his is where the patch version goes*/
-p#patch-version {
-  margin-top: 12px;
-  font-size: 20px;
-}
-
-/*Champion Select - This is where champions will go*/
-div.champion-select {
-  align-self: center;
-  border: 2px solid white;
-  display: flex;
-  flex-direction: column;
   align-items: center;
-  min-width: 50rem;
-  overflow-y: scroll;
-  height: 40rem;
+  flex-direction: column;
+  background-color: rgb(19, 19, 19);
+  color: wheat;
 }
 
-/*Search Champions - Used for searching champions*/
+div#header > a {
+  align-self: flex-end;
+}
+
+div#champion-select {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+div#champion-select > select {
+  max-width: 175px;
+  justify-self: center;
+  margin-bottom: 10px;
+}
+
+div#champion-selector-search {
+  display: flex;
+  flex-direction: row;
+  border: 2px solid #f3f3f3;
+  overflow-y: hidden;
+  width: 75%;
+  height: 500px;
+  margin-bottom: 20px;
+}
+
 input#searchChampions {
   background-color: rgb(19, 19, 19);
   font-size: 20px;
   color: white;
-  background-color: transparent;
   text-align: center;
   max-height: 30px;
-  width: 99.2%;
-  border: 1px solid wheat;
+  width: 100%;
   justify-self: center;
 }
 
-/*Champions - Used to store all of champions*/
-div#champions {
+div#champion-selector {
   display: grid;
-  grid-template-columns: repeat(6, 8rem);
-  max-height: 40rem;
-  margin-top: 10px;
+  grid-template-columns: repeat(8, 1fr);
+  height: 500px;
+  width: 100%;
+  margin-bottom: 20px;
+  justify-self: center;
+  overflow-y: scroll;
 }
 
-/*Champion - Stores icon and name of a champion*/
-div.champion {
+div.champion-icon {
   display: flex;
   flex-direction: column;
-  margin-bottom: 10px;
+  margin: 10px 0px 0px 0px;
+  max-height: 250px;
 }
 
-/*Champion Icon - Icon of the champion*/
-img.champion-icon {
+div.champion-icon > p {
+  margin: 5px 0px 0px 0px;
+  text-align: center;
+}
+
+div.champion-icon > img {
   max-height: 64px;
   max-width: 64px;
   align-self: center;
   border: 5px solid black;
 }
 
-/* Champion Name*/
-p.champion-name {
-  margin: 5px 0px 0px 0px;
+div.item-selector-info {
+  grid-area: items;
+  position: relative;
+  overflow: hidden;
+}
+
+div#item-selector {
+  display: flex;
+  flex-direction: row;
+  border: 2px solid #f3f3f3;
+  overflow-y: scroll;
+  height: 500px;
+  margin-bottom: 20px;
+  color: white;
+}
+
+input#searchItems {
+  background-color: rgb(19, 19, 19);
+  font-size: 20px;
+  color: white;
+  text-align: center;
+}
+
+div.item-icons {
+  margin-left: 10px;
+}
+
+div.item-icons > img {
+  border: 2px solid green;
+  margin: 2px;
+  width: 40px;
+  height: 40px;
+}
+
+div#items {
+  margin-top: 10px;
+  display: block;
+  align-items: center;
+}
+
+div#items > hr {
+  width: 97%;
+  align-self: center;
+}
+
+span.item-class {
+  margin: 10px 10px 10px 10px;
+  display: block;
+  text-align: center;
+}
+
+img#item-icon {
+  position: relative;
+  display: inline-block;
+  padding: 10px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+
+img#item-icon:hover .item-info {
+  display: block;
+  transform: translate(
+    10px,
+    -10px
+  ); /* Adjust values for the desired position */
+  opacity: 1;
+}
+
+div.info-popout {
+  position: absolute;
+  display: none;
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, opacity 0.2s;
+}
+
+div.info {
+  grid-area: infospells;
+}
+
+div#champion-info-spells {
+  display: grid;
+  grid-template-areas:
+    "info items"
+    "info build"
+    "spells spells";
+  grid-template-columns: 35% 65%;
+}
+
+div#champion-info {
+  grid-area: info;
+  border: 2px #f3f3f3 solid;
+  color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+div#champion-loading {
+  display: flex;
+  justify-content: center;
+  background-color: black;
+}
+
+img#champion-loading {
+  max-width: 180px;
+  max-height: 320px;
+  align-self: center;
+}
+
+div#champion-level {
+  justify-self: center;
+  align-self: center;
+  text-align: center;
+}
+
+div.champion-name {
+  border: 2px #f3f3f3 solid;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+
+div.champion-name > h2,
+div.champion-name > h3 {
+  margin: 0px;
+  text-align: center;
+}
+
+span#champion-name {
+  overflow: visible;
+  text-align: center;
+}
+
+span#champion-title {
+  overflow: visible;
+  text-align: center;
+}
+
+div#champion-stats {
+  display: flex;
+  flex-direction: column;
+  grid-area: spells;
+  border: 2px gold solid;
+}
+
+div#base-stats-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 5%;
+  margin-top: 1%;
+}
+
+div#base-stats {
+  display: grid;
+  grid-template-areas: "health resource";
+  grid-template-columns: 50% 50%;
+}
+
+div.column1 {
+  border: 2px #f3f3f3 solid;
+  grid-area: health;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+div.column1 > p {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  overflow: hidden;
+  text-align: center;
+}
+
+div.column2 {
+  grid-area: resource;
+  border: 2px #f3f3f3 solid;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+div.column2 > p {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  overflow: hidden;
+  text-align: center;
+}
+
+div#champion-spells {
+  grid-area: spells;
+  border: 2px #f3f3f3 solid;
+}
+
+div#champion-spells > h2 {
   text-align: center;
   color: white;
+}
+
+div.spell-header {
+  display: flex;
+  color: white;
+  flex-direction: row;
+  margin-top: 0px;
+}
+
+div.spell-name {
+  align-self: center;
+  justify-self: start;
+}
+
+div.spell-stats {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: start;
+  justify-self: flex-start;
+  align-self: flex-start;
+  margin-left: 5%;
+  flex: 1;
+}
+
+div.spell-stats > div {
+  margin-left: 0px;
+  margin-right: 5%;
+}
+
+div.spell-stats > div > p {
+  margin-top: 0px;
+  margin-bottom: 2%;
+}
+
+p.ability-name {
+  margin-left: 10px;
+  color: white;
+}
+
+div.ability {
+  display: flex;
+  flex-direction: row;
+  color: white;
+}
+
+div.ability > img {
+  width: 70px;
+  height: 70px;
+  max-width: 70px;
+  max-height: 70px;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+div#effect {
+  margin-right: 20px;
+}
+
+div.ability-effect {
+  overflow: hidden;
+}
+
+.innate-text {
+  color: red;
+  font-weight: bold;
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+.extra-text {
+  color: darkred;
+  font-weight: bold;
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+div.buttons {
+  margin-left: 10px;
+}
+
+div.notes {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  margin-left: 10px;
+  margin-right: 10px;
+  color: white;
+}
+
+div.notes > button {
+  background-color: #f1f1f1;
+  border: 2px solid black;
+  border-radius: 20%;
+  padding: 10px 10px;
+  cursor: pointer;
+}
+
+div.notes > button:hover {
+  background-color: #ddd;
+}
+
+div.R {
+  margin-bottom: 10px;
+}
+
+div#item-info {
+  border: 2px solid #f3f3f3;
+  width: 75%;
+  justify-self: center;
+  display: grid;
+  background-color: rgb(19, 19, 19);
+  color: white;
+}
+
+div#item-info > div {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+div#item-icon-name-cost {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin-left: 20px;
+}
+
+div#item-name-cost {
+  display: grid;
+  margin-left: 15px;
+}
+
+img#item-icon {
+  width: 40px;
+  height: 40px;
+  border: 2px solid green;
+}
+
+div#item-cost > img {
+  width: 20px;
+  height: 20px;
+  transform: translate(0%, 20%);
+}
+
+ul.item-stats {
+  list-style-type: none;
+}
+
+img#stat-icon {
+  width: 16px;
+  height: 16px;
+}
+
+div#active-effects > p {
+  margin-left: 20px;
 }
