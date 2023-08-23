@@ -49,21 +49,49 @@
           <div class="primary-rune-tree">
             <!--Rune Tree Selection-->
             <div class="primary-rune-tree-selection">
-              <div class="selected"><img src="Assets/Runes/Icons/Domination.png" alt="Domination">
+              <div data-rune-tree="Precision"><img src="Assets/Runes/Icons/Precision.png" alt="Precision"></div>
+              <div data-rune-tree="Domination"><img src="Assets/Runes/Icons/Domination.png" alt="Domination">
               </div>
-              <div><img src="Assets/Runes/Icons/Precision.png" alt="Precision"></div>
-              <div><img src="Assets/Runes/Icons/Sorcery.png" alt="Sorcery"></div>
-              <div><img src="Assets/Runes/Icons/Resolve.png" alt="Resolve"></div>
-              <div><img src="Assets/Runes/Icons/Inspiration.png" alt="Inspiration"></div>
+              <div data-rune-tree="Sorcery"><img src="Assets/Runes/Icons/Sorcery.png" alt="Sorcery"></div>
+              <div data-rune-tree="Resolve"><img src="Assets/Runes/Icons/Resolve.png" alt="Resolve"></div>
+              <div data-rune-tree="Inspiration"><img src="Assets/Runes/Icons/Inspiration.png" alt="Inspiration"></div>
             </div>
             <!--Break to make it look pretty-->
             <hr>
             <!--Rune Trees-->
+            <!--Precision Tree-->
+            <div id="Precision" hidden>
+              <!--Keystone Row-->
+              <div id="precision-keystone" class="keystone-row">
+                <div><img src="Assets/Runes/Precision/Keystone/1.png" alt="Press The Attack"></div>
+                <div><img src="Assets/Runes/Precision/Keystone/2.png" alt="Lethal Tempo"></div>
+                <div><img src="Assets/Runes/Precision/Keystone/3.png" alt="Fleet Footwork"></div>
+                <div><img src="Assets/Runes/Precision/Keystone/4.png" alt="Conqueror"></div>
+              </div>
+              <!--First Row-->
+              <div id="precision-secondary-row1" class="rune-row">
+                <div><img src="Assets/Runes/Precision/Row 1/1.png" alt="Overheal"></div>
+                <div><img src="Assets/Runes/Precision/Row 1/2.png" alt="Triumph"></div>
+                <div><img src="Assets/Runes/Precision/Row 1/3.png" alt="Presence of Mind"></div>
+              </div>
+              <!--Second Row-->
+              <div id="precision-secondary-row2" class="rune-row">
+                <div><img src="Assets/Runes/Precision/Row 2/1.png" alt="Legend:Alacrity"></div>
+                <div><img src="Assets/Runes/Precision/Row 2/2.png" alt="Legend:Tenacity"></div>
+                <div><img src="Assets/Runes/Precision/Row 2/3.png" alt="Legend:Bloodline"></div>
+              </div>
+              <!--Third Row-->
+              <div id="precision-secondary-row3" class="rune-row">
+                <div><img src="Assets/Runes/Precision/Row 3/1.png" alt="Coup de Grace"></div>
+                <div><img src="Assets/Runes/Precision/Row 3/2.png" alt="Cut Down"></div>
+                <div><img src="Assets/Runes/Precision/Row 3/3.png" alt="Last Stand"></div>
+              </div>
+            </div>
             <!--Domination Tree-->
-            <div id="domination">
+            <div id="Domination" hidden>
               <!--Keystone Row-->
               <div id="domination-keystone" class="keystone-row">
-                <div class="selected"><img src="Assets/Runes/Domination/Keystone/1.png" alt="Electrocute"></div>
+                <div><img src="Assets/Runes/Domination/Keystone/1.png" alt="Electrocute"></div>
                 <div><img src="Assets/Runes/Domination/Keystone/2.png" alt="Predator"></div>
                 <div><img src="Assets/Runes/Domination/Keystone/3.png" alt="Dark Harvest"></div>
                 <div><img src="Assets/Runes/Domination/Keystone/4.png" alt="Hail of Blades"></div>
@@ -72,77 +100,130 @@
               <div id="domination-primary-row1" class="rune-row">
                 <div><img src="Assets/Runes/Domination/Row 1/1.png" alt="Cheap Shot"></div>
                 <div><img src="Assets/Runes/Domination/Row 1/2.png" alt="Taste of Blood"></div>
-                <div class="selected"><img src="Assets/Runes/Domination/Row 1/3.png" alt="Sudden Impact"></div>
+                <div><img src="Assets/Runes/Domination/Row 1/3.png" alt="Sudden Impact"></div>
               </div>
               <!--Second Row-->
               <div id="domination-primary-row2" class="rune-row">
                 <div><img src="Assets/Runes/Domination/Row 2/1.png" alt="Zombie Ward"></div>
                 <div><img src="Assets/Runes/Domination/Row 2/2.png" alt="Poro Ward"></div>
-                <div class="selected"><img src="Assets/Runes/Domination/Row 2/3.png" alt="Eyeball Collection"></div>
+                <div><img src="Assets/Runes/Domination/Row 2/3.png" alt="Eyeball Collection"></div>
               </div>
               <!--Third Row-->
               <div id="domination-primary-row3" class="rune-row">
                 <div><img src="Assets/Runes/Domination/Row 3/1.png" alt="Treasure Hunter"></div>
                 <div><img src="Assets/Runes/Domination/Row 3/2.png" alt="Ingenious Hunter"></div>
-                <div class="selected"><img src="Assets/Runes/Domination/Row 3/3.png" alt="Relentless Hunter"></div>
+                <div><img src="Assets/Runes/Domination/Row 3/3.png" alt="Relentless Hunter"></div>
                 <div><img src="Assets/Runes/Domination/Row 3/4.png" alt="Ultimate Hunter"></div>
               </div>
             </div>
-            <!--Precision Tree-->
-            <div id="precision" hidden></div>
             <!--Sorcery Tree-->
-            <div id="sorcery" hidden></div>
+            <div id="Sorcery" hidden>
+              <!--Keystone Row-->
+              <div id="sorcery-keystone" class="keystone-row">
+                <div><img src="Assets/Runes/Sorcery/Keystone/1.png" alt="Summon Aery"></div>
+                <div><img src="Assets/Runes/Sorcery/Keystone/2.png" alt="Arcane Comet"></div>
+                <div><img src="Assets/Runes/Sorcery/Keystone/3.png" alt="Phase Rush"></div>
+              </div>
+              <!--First Row-->
+              <div id="sorcery-primary-row1" class="rune-row">
+                <div><img src="Assets/Runes/Sorcery/Row 1/1.png" alt="Nullifying Orb"></div>
+                <div><img src="Assets/Runes/Sorcery/Row 1/2.png" alt="Manaflow Band"></div>
+                <div><img src="Assets/Runes/Sorcery/Row 1/3.png" alt="Nimbus Cloak"></div>
+              </div>
+              <!--Second Row-->
+              <div id="sorcery-primary-row2" class="rune-row">
+                <div><img src="Assets/Runes/Sorcery/Row 2/1.png" alt="Transcendence"></div>
+                <div><img src="Assets/Runes/Sorcery/Row 2/2.png" alt="Celerity"></div>
+                <div><img src="Assets/Runes/Sorcery/Row 2/3.png" alt="Absolute Focus"></div>
+              </div>
+              <!--Third Row-->
+              <div id="sorcery-primary-row3" class="rune-row">
+                <div><img src="Assets/Runes/Sorcery/Row 3/1.png" alt="Scorch"></div>
+                <div><img src="Assets/Runes/Sorcery/Row 3/2.png" alt="Waterwalking"></div>
+                <div><img src="Assets/Runes/Sorcery/Row 3/3.png" alt="Gathering Storm"></div>
+              </div>
+            </div>
             <!--Resolve Tree-->
-            <div id="resolve" hidden></div>
+            <div id="Resolve" hidden>
+              <!--Keystone Row-->
+              <div id="resolve-keystone" class="keystone-row">
+                <div><img src="Assets/Runes/Resolve/Keystone/1.png" alt="Grasp of the Undying"></div>
+                <div><img src="Assets/Runes/Resolve/Keystone/2.png" alt="Aftershock"></div>
+                <div><img src="Assets/Runes/Resolve/Keystone/3.png" alt="Guardian"></div>
+              </div>
+              <!--First Row-->
+              <div id="resolve-primary-row1" class="rune-row">
+                <div><img src="Assets/Runes/Resolve/Row 1/1.png" alt="Demolish"></div>
+                <div><img src="Assets/Runes/Resolve/Row 1/2.png" alt="Font of Life"></div>
+                <div><img src="Assets/Runes/Resolve/Row 1/3.png" alt="Shield Bash"></div>
+              </div>
+              <!--Second Row-->
+              <div id="resolve-primary-row2" class="rune-row">
+                <div><img src="Assets/Runes/Resolve/Row 2/1.png" alt="Conditioning"></div>
+                <div><img src="Assets/Runes/Resolve/Row 2/2.png" alt="Second Wind"></div>
+                <div><img src="Assets/Runes/Resolve/Row 2/3.png" alt="Bone Plating"></div>
+              </div>
+              <!--Third Row-->
+              <div id="resolve-primary-row3" class="rune-row">
+                <div><img src="Assets/Runes/Resolve/Row 3/1.png" alt="Overgrowth"></div>
+                <div><img src="Assets/Runes/Resolve/Row 3/2.png" alt="Revitalize"></div>
+                <div><img src="Assets/Runes/Resolve/Row 3/3.png" alt="Unflinching"></div>
+              </div>
+            </div>
             <!--Inspiration Tree-->
-            <div id="inspiration" hidden></div>
+            <div id="Inspiration" hidden>
+              <!--Keystone Row-->
+              <div id="inspiration-keystone" class="keystone-row">
+                <div><img src="Assets/Runes/Inspiration/Keystone/1.png" alt="Glacial Augment"></div>
+                <div><img src="Assets/Runes/Inspiration/Keystone/2.png" alt="Unsealed Spellbook"></div>
+                <div><img src="Assets/Runes/Inspiration/Keystone/3.png" alt="First Strike"></div>
+              </div>
+              <!--First Row-->
+              <div id="inspiration-primary-row1" class="rune-row">
+                <div><img src="Assets/Runes/Inspiration/Row 1/1.png" alt="Hexflash"></div>
+                <div><img src="Assets/Runes/Inspiration/Row 1/2.png" alt="Magical Footwear"></div>
+                <div><img src="Assets/Runes/Inspiration/Row 1/3.png" alt="Perfect Timing"></div>
+              </div>
+              <!--Second Row-->
+              <div id="inspiration-primary-row2" class="rune-row">
+                <div><img src="Assets/Runes/Inspiration/Row 2/1.png" alt="Future's Market"></div>
+                <div><img src="Assets/Runes/Inspiration/Row 2/2.png" alt="Minion Dematerializer"></div>
+                <div><img src="Assets/Runes/Inspiration/Row 2/3.png" alt="Biscuit Delivery"></div>
+              </div>
+              <!--Third Row-->
+              <div id="inspiration-primary-row3" class="rune-row">
+                <div><img src="Assets/Runes/Inspiration/Row 3/1.png" alt="Cosmic Insight"></div>
+                <div><img src="Assets/Runes/Inspiration/Row 3/2.png" alt="Approach Velocity"></div>
+                <div><img src="Assets/Runes/Inspiration/Row 3/3.png" alt="Time Warp Tonic"></div>
+              </div>
+            </div>
           </div>
+          <!--Unselect Runes Button-->
+          <button id="clear-runes" hidden>Clear Runes</button>
         </div>
         <!--Secondary Runes-->
-        <div class="secondary-tree">
+        <div class="secondary-tree" hidden>
           <!--Paragraph telling user that below are Secondary Runes & Mini Runes-->
           <p class="rune-tree-name">Secondary Runes</p>
           <div class="secondary-rune-tree-mini-runes">
             <div class="secondary-rune-tree">
               <!--Rune Tree Selection-->
               <div class="secondary-rune-tree-selection">
-                <div><img src="Assets/Runes/Icons/Domination.png" alt="Domination"></div>
-                <div class="selected"><img src="Assets/Runes/Icons/Precision.png" alt="Precision"></div>
-                <div><img src="Assets/Runes/Icons/Sorcery.png" alt="Sorcery"></div>
-                <div><img src="Assets/Runes/Icons/Resolve.png" alt="Resolve"></div>
-                <div><img src="Assets/Runes/Icons/Inspiration.png" alt="Inspiration"></div>
+                <div data-rune-tree="Precision"><img src="Assets/Runes/Icons/Precision.png" alt="Precision"></div>
+                <div data-rune-tree="Domination"><img src="Assets/Runes/Icons/Domination.png" alt="Domination"></div>
+                <div data-rune-tree="Sorcery"><img src="Assets/Runes/Icons/Sorcery.png" alt="Sorcery"></div>
+                <div data-rune-tree="Resolve"><img src="Assets/Runes/Icons/Resolve.png" alt="Resolve"></div>
+                <div data-rune-tree="Inspiration"><img src="Assets/Runes/Icons/Inspiration.png" alt="Inspiration"></div>
               </div>
               <!--Break to make it look pretty-->
               <hr>
               <!--Rune Trees-->
-              <!--Domination Tree-->
-              <div id="domination" hidden>
-                <!--First Row-->
-                <div id="domination-secondary-row1" class="rune-row">
-                  <div><img src="Assets/Runes/Domination/Row 1/1.png" alt="Cheap Shot"></div>
-                  <div><img src="Assets/Runes/Domination/Row 1/2.png" alt="Taste of Blood"></div>
-                  <div class="selected"><img src="Assets/Runes/Domination/Row 1/3.png" alt="Sudden Impact"></div>
-                </div>
-                <!--Second Row-->
-                <div id="domination-secondary-row2" class="rune-row">
-                  <div><img src="Assets/Runes/Domination/Row 2/1.png" alt="Zombie Ward"></div>
-                  <div><img src="Assets/Runes/Domination/Row 2/2.png" alt="Poro Ward"></div>
-                  <div class="selected"><img src="Assets/Runes/Domination/Row 2/3.png" alt="Eyeball Collection"></div>
-                </div>
-                <!--Third Row-->
-                <div id="domination-secondary-row3" class="rune-row">
-                  <div><img src="Assets/Runes/Domination/Row 3/1.png" alt="Treasure Hunter"></div>
-                  <div><img src="Assets/Runes/Domination/Row 3/2.png" alt="Ingenious Hunter"></div>
-                  <div class="selected"><img src="Assets/Runes/Domination/Row 3/3.png" alt="Relentless Hunter"></div>
-                  <div><img src="Assets/Runes/Domination/Row 3/4.png" alt="Ultimate Hunter"></div>
-                </div>
-              </div>
               <!--Precision Tree-->
-              <div id="precision">
+              <div id="Precision" hidden>
                 <!--First Row-->
                 <div id="precision-secondary-row1" class="rune-row">
                   <div><img src="Assets/Runes/Precision/Row 1/1.png" alt="Overheal"></div>
-                  <div class="selected"><img src="Assets/Runes/Precision/Row 1/2.png" alt="Triumph"></div>
+                  <div><img src="Assets/Runes/Precision/Row 1/2.png" alt="Triumph"></div>
                   <div><img src="Assets/Runes/Precision/Row 1/3.png" alt="Presence of Mind"></div>
                 </div>
                 <!--Second Row-->
@@ -153,52 +234,130 @@
                 </div>
                 <!--Third Row-->
                 <div id="precision-secondary-row3" class="rune-row">
-                  <div class="selected"><img src="Assets/Runes/Precision/Row 3/1.png" alt="Coup de Grace"></div>
+                  <div><img src="Assets/Runes/Precision/Row 3/1.png" alt="Coup de Grace"></div>
                   <div><img src="Assets/Runes/Precision/Row 3/2.png" alt="Cut Down"></div>
                   <div><img src="Assets/Runes/Precision/Row 3/3.png" alt="Last Stand"></div>
                 </div>
               </div>
+              <!--Domination Tree-->
+              <div id="Domination" hidden>
+                <!--First Row-->
+                <div id="domination-secondary-row1" class="rune-row">
+                  <div><img src="Assets/Runes/Domination/Row 1/1.png" alt="Cheap Shot"></div>
+                  <div><img src="Assets/Runes/Domination/Row 1/2.png" alt="Taste of Blood"></div>
+                  <div><img src="Assets/Runes/Domination/Row 1/3.png" alt="Sudden Impact"></div>
+                </div>
+                <!--Second Row-->
+                <div id="domination-secondary-row2" class="rune-row">
+                  <div><img src="Assets/Runes/Domination/Row 2/1.png" alt="Zombie Ward"></div>
+                  <div><img src="Assets/Runes/Domination/Row 2/2.png" alt="Poro Ward"></div>
+                  <div><img src="Assets/Runes/Domination/Row 2/3.png" alt="Eyeball Collection"></div>
+                </div>
+                <!--Third Row-->
+                <div id="domination-secondary-row3" class="rune-row">
+                  <div><img src="Assets/Runes/Domination/Row 3/1.png" alt="Treasure Hunter"></div>
+                  <div><img src="Assets/Runes/Domination/Row 3/2.png" alt="Ingenious Hunter"></div>
+                  <div><img src="Assets/Runes/Domination/Row 3/3.png" alt="Relentless Hunter"></div>
+                  <div><img src="Assets/Runes/Domination/Row 3/4.png" alt="Ultimate Hunter"></div>
+                </div>
+              </div>
               <!--Sorcery Tree-->
-              <div id="sorcery" hidden></div>
+              <div id="Sorcery" hidden>
+                <!--First Row-->
+                <div id="sorcery-secondary-row1" class="rune-row">
+                  <div><img src="Assets/Runes/Sorcery/Row 1/1.png" alt="Nullifying Orb"></div>
+                  <div><img src="Assets/Runes/Sorcery/Row 1/2.png" alt="Manaflow Band"></div>
+                  <div><img src="Assets/Runes/Sorcery/Row 1/3.png" alt="Nimbus Cloak"></div>
+                </div>
+                <!--Second Row-->
+                <div id="sorcery-secondary-row2" class="rune-row">
+                  <div><img src="Assets/Runes/Sorcery/Row 2/1.png" alt="Transcendence"></div>
+                  <div><img src="Assets/Runes/Sorcery/Row 2/2.png" alt="Celerity"></div>
+                  <div><img src="Assets/Runes/Sorcery/Row 2/3.png" alt="Absolute Focus"></div>
+                </div>
+                <!--Third Row-->
+                <div id="sorcery-secondary-row3" class="rune-row">
+                  <div><img src="Assets/Runes/Sorcery/Row 3/1.png" alt="Scorch"></div>
+                  <div><img src="Assets/Runes/Sorcery/Row 3/2.png" alt="Waterwalking"></div>
+                  <div><img src="Assets/Runes/Sorcery/Row 3/3.png" alt="Gathering Storm"></div>
+                </div>
+              </div>
               <!--Resolve Tree-->
-              <div id="resolve" hidden></div>
+              <div id="Resolve" hidden>
+                <!--First Row-->
+                <div id="resolve-secondary-row1" class="rune-row">
+                  <div><img src="Assets/Runes/Resolve/Row 1/1.png" alt="Demolish"></div>
+                  <div><img src="Assets/Runes/Resolve/Row 1/2.png" alt="Font of Life"></div>
+                  <div><img src="Assets/Runes/Resolve/Row 1/3.png" alt="Shield Bash"></div>
+                </div>
+                <!--Second Row-->
+                <div id="resolve-secondary-row2" class="rune-row">
+                  <div><img src="Assets/Runes/Resolve/Row 2/1.png" alt="Conditioning"></div>
+                  <div><img src="Assets/Runes/Resolve/Row 2/2.png" alt="Second Wind"></div>
+                  <div><img src="Assets/Runes/Resolve/Row 2/3.png" alt="Bone Plating"></div>
+                </div>
+                <!--Third Row-->
+                <div id="resolve-secondary-row3" class="rune-row">
+                  <div><img src="Assets/Runes/Resolve/Row 3/1.png" alt="Overgrowth"></div>
+                  <div><img src="Assets/Runes/Resolve/Row 3/2.png" alt="Revitalize"></div>
+                  <div><img src="Assets/Runes/Resolve/Row 3/3.png" alt="Unflinching"></div>
+                </div>
+              </div>
               <!--Inspiration Tree-->
-              <div id="inspiration" hidden></div>
-            </div>
-            <div class="mini-runes">
-              <div class="mini-rune-row">
-                <div><img src="Assets/Runes/Stats/Adaptive Force.png" alt="Adaptive Force"></div>
-                <div class="selected"><img src="Assets/Runes/Stats/Attack Speed.png" alt="Attack Speed"></div>
-                <div><img src="Assets/Runes/Stats/Ability Haste.png" alt="Ability Haste"></div>
+              <div id="Inspiration" hidden>
+                <!--First Row-->
+                <div id="inspiration-secondary-row1" class="rune-row">
+                  <div><img src="Assets/Runes/Inspiration/Row 1/1.png" alt="Hexflash"></div>
+                  <div><img src="Assets/Runes/Inspiration/Row 1/2.png" alt="Magical Footwear"></div>
+                  <div><img src="Assets/Runes/Inspiration/Row 1/3.png" alt="Perfect Timing"></div>
+                </div>
+                <!--Second Row-->
+                <div id="inspiration-secondary-row2" class="rune-row">
+                  <div><img src="Assets/Runes/Inspiration/Row 2/1.png" alt="Future's Market"></div>
+                  <div><img src="Assets/Runes/Inspiration/Row 2/2.png" alt="Minion Dematerializer"></div>
+                  <div><img src="Assets/Runes/Inspiration/Row 2/3.png" alt="Biscuit Delivery"></div>
+                </div>
+                <!--Third Row-->
+                <div id="inspiration-secondary-row3" class="rune-row">
+                  <div><img src="Assets/Runes/Inspiration/Row 3/1.png" alt="Cosmic Insight"></div>
+                  <div><img src="Assets/Runes/Inspiration/Row 3/2.png" alt="Approach Velocity"></div>
+                  <div><img src="Assets/Runes/Inspiration/Row 3/3.png" alt="Time Warp Tonic"></div>
+                </div>
               </div>
-              <div class="mini-rune-row">
-                <div class="selected"><img src="Assets/Runes/Stats/Adaptive Force.png" alt="Adaptive Force"></div>
-                <div><img src="Assets/Runes/Stats/Armor.png" alt="Armor"></div>
-                <div><img src="Assets/Runes/Stats/Magic Resistance.png" alt="Magic Resistance"></div>
-              </div>
-              <div class="mini-rune-row">
-                <div class="selected"><img src="Assets/Runes/Stats/Healing Scaling.png" alt="Health Scaling"></div>
-                <div><img src="Assets/Runes/Stats/Armor.png" alt="Armor"></div>
-                <div><img src="Assets/Runes/Stats/Magic Resistance.png" alt="Magic Resistance"></div>
+              <div class="mini-runes" style="display: none;">
+                <div class="mini-rune-row">
+                  <div><img src="Assets/Runes/Stats/Adaptive Force.png" alt="Adaptive Force"></div>
+                  <div><img src="Assets/Runes/Stats/Attack Speed.png" alt="Attack Speed"></div>
+                  <div><img src="Assets/Runes/Stats/Ability Haste.png" alt="Ability Haste"></div>
+                </div>
+                <div class="mini-rune-row">
+                  <div><img src="Assets/Runes/Stats/Adaptive Force.png" alt="Adaptive Force"></div>
+                  <div><img src="Assets/Runes/Stats/Armor.png" alt="Armor"></div>
+                  <div><img src="Assets/Runes/Stats/Magic Resistance.png" alt="Magic Resistance"></div>
+                </div>
+                <div class="mini-rune-row">
+                  <div><img src="Assets/Runes/Stats/Healing Scaling.png" alt="Health Scaling"></div>
+                  <div><img src="Assets/Runes/Stats/Armor.png" alt="Armor"></div>
+                  <div><img src="Assets/Runes/Stats/Magic Resistance.png" alt="Magic Resistance"></div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <!--Scripts-->
-  <!--This one is used for general stuff like grabbing patch versions and has functions for rounding numbers etc..-->
-  <script src="Scripts/index.js"></script>
-  <!--This has general stuff for champions-->
-  <script src="Scripts/Champions/index.js"></script>
-  <!--This has champion specific functions-->
-  <script src="Scripts/Champions/championFunctions.js"></script>
-  <!--THis has general stuff for items-->
-  <script src="Scripts/Items/index.js"></script>
-  <!--This has functions for runes-->
-  <script src="Scripts/Runes/index.js"></script>
+    <!--Scripts-->
+    <!--This one is used for general stuff like grabbing patch versions and has functions for rounding numbers etc..-->
+    <script src="Scripts/index.js"></script>
+    <!--This has general stuff for champions-->
+    <script src="Scripts/Champions/index.js"></script>
+    <!--This has champion specific functions-->
+    <script src="Scripts/Champions/championFunctions.js"></script>
+    <!--THis has general stuff for items-->
+    <script src="Scripts/Items/index.js"></script>
+    <!--This has functions for runes-->
+    <script src="Scripts/Runes/index.js"></script>
 </body>
 
 </html>
