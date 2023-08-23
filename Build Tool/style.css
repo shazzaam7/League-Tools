@@ -175,13 +175,16 @@ p#champion-name-title {
 /*Champion Details Body - Has Runes, Skill Order*/
 div.champion-details-body {
   display: flex;
-  margin-bottom: 500px;
+  flex-direction: column;
+  padding-bottom: 500px;
+  align-content: center;
 }
 
 /*Runes*/
 div.runes {
   display: flex;
   flex-direction: row;
+  justify-content: center;
   color: whitesmoke;
 }
 
@@ -194,6 +197,8 @@ p.rune-tree-name {
 div.primary-rune-tree-selection,
 div.secondary-rune-tree-selection {
   display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
 div.primary-tree,
@@ -220,6 +225,12 @@ div.secondary-rune-tree-selection > div.selected {
   display: flex;
 }
 
+/*Primary Rune Tree Specifics*/
+div.primary-tree {
+  display: flex;
+  flex-direction: column;
+}
+
 /*Secondary Rune Tree specifics*/
 div.secondary-rune-tree-mini-runes {
   display: flex;
@@ -235,8 +246,8 @@ div.keystone-row {
 
 div.keystone-row > div {
   display: flex;
-  margin-left: 0.1rem;
-  margin-right: 0.1rem;
+  margin-left: 0.4rem;
+  margin-right: 0.4rem;
   filter: grayscale(100%);
 }
 
@@ -259,8 +270,8 @@ div.rune-row {
 
 div.rune-row > div {
   display: flex;
-  margin-left: 0.4rem;
-  margin-right: 0.4rem;
+  margin-left: 0.6rem;
+  margin-right: 0.6rem;
   filter: grayscale(100%);
 }
 
@@ -291,10 +302,19 @@ div.mini-rune-row > div {
   border: 2px solid gold;
   border-radius: 20px;
   display: flex;
-  margin: 0.3rem 0.6rem 0rem 0.6rem;
+  margin: 0.3rem 0.8rem 0.3rem 0.8rem;
   filter: grayscale(100%);
 }
 
 div.mini-rune-row > div.selected {
   filter: grayscale(0%);
+}
+
+/*Clear Runes Button*/
+button#clear-runes {
+  align-self: center;
+  margin-top: 2.5rem;
+  color: whitesmoke;
+  background-color: #0c0a30;
+  border-radius: 12px;
 }
