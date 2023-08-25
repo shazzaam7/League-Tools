@@ -25,6 +25,8 @@ function grabAllChampions() {
                 newChampion.addEventListener("click", () => {
                     document.getElementById('loading-screen').style.display = 'flex';
                     grabChampionDetails(newChampion.value);
+                    grabAllItems();
+                    document.querySelector("div#item-selector").style.display = "grid";
                     document.getElementById('loading-screen').style.display = 'none';
                     document.querySelector("div#champion-info-spells").style.display = "grid";
                     document.querySelector("div#champion-info-spells").scrollIntoView({ behavior: "smooth" });
@@ -232,11 +234,42 @@ function fillAbilitiesDefault() {
         document.querySelector(`img#passive-icon${index + 1}`).src = currentChampion.abilities.P[index].icon;
         currentChampion.abilities.P[index].effects.forEach(effect => {
             let newItem = document.createElement('div');
+            let br = document.createElement('br');
             newItem.id = "passive-effect";
             styleEffect(effect.description);
             newItem.innerText = effect.description;
             document.querySelector(`div#passive-effect${index + 1}`).appendChild(newItem);
-        })
+        });
+        /*
+        document.querySelector(`div#passive-stats${index + 1}`).innerHTML = "";
+        for (let attribute in currentChampion.abilities.P[index]) {
+            if (currentChampion.abilities.P[0][attribute] != null) {
+                switch (attribute) {
+                    case "cooldown":
+                        let newDiv = document.createElement("div");
+                        let newItem = document.createElement("p");
+                        if (currentChampion.abilities.P[index].cooldown.modifiers[0].values[0] == currentChampion.abilities.P[index].cooldown.modifiers[0].values[currentChampion.abilities.P[index].cooldown.modifiers[0].values.length - 1]) {
+                            newItem.innerText = `Cooldown: ${currentChampion.abilities.P[index].cooldown.modifiers[0].values[0]} seconds`;
+                            newDiv.appendChild(newItem);
+                        } else {
+                            if (currentChampion.abilities.P[index].cooldown.modifiers[0].values.length > 5) {
+                                newItem.innerText = `Cooldown: ${currentChampion.abilities.P[index].cooldown.modifiers[0].values[0]} - ${currentChampion.abilities.P[index].cooldown.modifiers[0].values[currentChampion.abilities.P[index].cooldown.modifiers[0].values.length - 1]} (Based on Level) seconds`;
+                                newItem.title = `Formula: ${currentChampion.abilities.P[index].cooldown.modifiers[0].values[0]} - ${currentChampion.abilities.P[index].cooldown.modifiers[0].values[currentChampion.abilities.P[index].cooldown.modifiers[0].values.length - 1]} / 17 * (Level - 1)`;
+                                newDiv.appendChild(newItem);
+                            } else {
+                                newItem.innerText = `Cooldown: ${currentChampion.abilities.P[index].cooldown.modifiers[0].values.join(' / ')} (Based on Level) seconds`;
+                                newItem.title = `Formula: ${currentChampion.abilities.P[index].cooldown.modifiers[0].values[0]} - ${currentChampion.abilities.P[index].cooldown.modifiers[0].values[currentChampion.abilities.P[index].cooldown.modifiers[0].values.length - 1]} / 17 * (Level - 1)`;
+                                newDiv.appendChild(newItem);
+                            }
+                        }
+                        document.querySelector(`div#passive-stats${index + 1}`).appendChild(newDiv);
+                        break;
+
+                    default:
+                        break;
+                }
+            }
+        }*/
         styleAbilities(document.querySelectorAll(`div#passive-effect${index + 1}`));
         if (currentChampion.abilities.P[index].notes != "No additional details.") {
             document.querySelector(`div#passive-notes${index + 1}`).removeAttribute("hidden");
@@ -463,20 +496,26 @@ function styleEffect(effectDescription) {
             lowerBound = parseInt(match[1]);
             upperBound = parseInt(match[2]);
         }
-        console.log("Lower Bound:", lowerBound); // Output: 4
-        console.log("Upper Bound:", upperBound); // Output: 12
     }
 }
 
 function styleAbilities(element) {
     element.forEach(p => {
         let text = p.textContent;
-        const regex = /(Innate(?:\s*-\s*[\w\s]+)?\s*:|Active(?:\s*-\s*[\w\s]+)?\s*:|Passive(?:\s*-\s*[\w\s]+)?\s*:|Recast(?:\s*-\s*[\w\s]+)?\s*:|Toggle(?:\s*-\s*[\w\s]+)?\s*:|Pow-Pow(?:\s*-\s*[\w\s]+)?\s*:|Fishbones(?:\s*-\s*[\w\s]+)?\s*:|First Cast(?:\s*-\s*[\w\s]+)?\s*:|Second Cast(?:\s*-\s*[\w\s]+)?\s*:|Third Cast(?:\s*-\s*[\w\s]+)?\s*:|Passive - Soul-Marked(?:\s*-\s*[\w\s]+)?\s*:)/g;
+        const regex = /(Innate(?:\s*-\s*[\w\s]+)?\s*:|Active(?:\s*-\s*[\w\s]+)?\s*:|Passive(?:\s*-\s*[\w\s]+)?\s*:|Recast(?:\s*-\s*[\w\s]+)?\s*:|Toggle(?:\s*-\s*[\w\s]+)?\s*:|Pow-Pow(?:\s*-\s*[\w\s]+)?\s*:|Fishbones(?:\s*-\s*[\w\s]+)?\s*:|First Cast(?:\s*-\s*[\w\s]+)?\s*:|Second Cast(?:\s*-\s*[\w\s]+)?\s*:|Third Cast(?:\s*-\s*[\w\s]+)?\s*:|Passive - Soul-Marked(?:\s*-\s*[\w\s]+)?\s*:|Swinging Kama(?:\s*-\s*[\w\s]+)?\s*:|Singularity(?:\s*-\s*[\w\s]+)?\s*:|Breath of Light(?:\s*-\s*[\w\s]+)?\s*:|Astral Flight(?:\s*-\s*[\w\s]+)?\s*:)/g;
         let modifiedContent = text.replace(regex, match => {
             switch (match) {
                 case /Pow-Pow(?:\s*-\s*[\w\s]+)?\s*:/.test(match) && match:
                     return `<br><span class="extra-text">${match}</span>`;
                 case /Fishbones(?:\s*-\s*[\w\s]+)?\s*:/.test(match) && match:
+                    return `<br><span class="extra-text">${match}</span>`;
+                case /Swinging Kama(?:\s*-\s*[\w\s]+)?\s*:/.test(match) && match:
+                    return `<br><span class="extra-text">${match}</span>`;
+                case /Singularity(?:\s*-\s*[\w\s]+)?\s*:/.test(match) && match:
+                    return `<br><span class="extra-text">${match}</span>`;
+                case /Breath of Light(?:\s*-\s*[\w\s]+)?\s*:/.test(match) && match:
+                    return `<br><span class="extra-text">${match}</span>`;
+                case /Astral Flight(?:\s*-\s*[\w\s]+)?\s*:/.test(match) && match:
                     return `<br><span class="extra-text">${match}</span>`;
                 case /First Cast(?:\s*-\s*[\w\s]+)?\s*:/.test(match) && match:
                     return `<br><span class="extra-text">${match}</span>`;

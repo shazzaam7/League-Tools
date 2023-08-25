@@ -129,14 +129,20 @@ div.champion-icon > img {
   border: 5px solid black;
 }
 
+div.item-selector-info {
+  grid-area: items;
+  position: relative;
+  overflow: hidden;
+}
+
 div#item-selector {
   display: flex;
   flex-direction: row;
   border: 2px solid #f3f3f3;
   overflow-y: scroll;
-  width: 75%;
   height: 500px;
   margin-bottom: 20px;
+  color: white;
 }
 
 input#searchItems {
@@ -174,13 +180,44 @@ span.item-class {
   text-align: center;
 }
 
+img#item-icon {
+  position: relative;
+  display: inline-block;
+  padding: 10px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+
+img#item-icon:hover .item-info {
+  display: block;
+  transform: translate(
+    10px,
+    -10px
+  ); /* Adjust values for the desired position */
+  opacity: 1;
+}
+
+div.info-popout {
+  position: absolute;
+  display: none;
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, opacity 0.2s;
+}
+
 div.info {
   grid-area: infospells;
 }
 
 div#champion-info-spells {
   display: grid;
-  grid-template-areas: "info spells";
+  grid-template-areas:
+    "info items"
+    "info build"
+    "spells spells";
   grid-template-columns: 35% 65%;
 }
 
@@ -242,8 +279,11 @@ div#champion-stats {
 
 div#base-stats-header {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-bottom: 5%;
+  margin-top: 1%;
 }
 
 div#base-stats {
@@ -291,6 +331,39 @@ div#champion-spells {
 div#champion-spells > h2 {
   text-align: center;
   color: white;
+}
+
+div.spell-header {
+  display: flex;
+  color: white;
+  flex-direction: row;
+  margin-top: 0px;
+}
+
+div.spell-name {
+  align-self: center;
+  justify-self: start;
+}
+
+div.spell-stats {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: start;
+  justify-self: flex-start;
+  align-self: flex-start;
+  margin-left: 5%;
+  flex: 1;
+}
+
+div.spell-stats > div {
+  margin-left: 0px;
+  margin-right: 5%;
+}
+
+div.spell-stats > div > p {
+  margin-top: 0px;
+  margin-bottom: 2%;
 }
 
 p.ability-name {

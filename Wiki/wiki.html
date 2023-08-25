@@ -25,73 +25,11 @@
           <input type="text" id="searchChampions" />
           <div id="champion-selector"></div>
         </div>
-        <div id="item-selector">
-          <input type="text" id="searchItems" />
-          <div id="items">
-            <span class="item-class">Starter</span>
-            <hr />
-            <div id="starter-items" class="item-icons"></div>
-          </div>
-          <div id="items">
-            <span class="item-class">Basic</span>
-            <hr />
-            <div id="basic-items" class="item-icons"></div>
-          </div>
-          <div id="items">
-            <span class="item-class">Boots</span>
-            <hr />
-            <div id="boots" class="item-icons"></div>
-          </div>
-          <div id="items">
-            <span class="item-class">Epic</span>
-            <hr />
-            <div id="epic-items" class="item-icons"></div>
-          </div>
-          <div id="items">
-            <span class="item-class">Legendary</span>
-            <hr />
-            <div id="legendary-items" class="item-icons"></div>
-          </div>
-          <div id="items">
-            <span class="item-class">Mythic</span>
-            <hr />
-            <div id="mythic-items" class="item-icons"></div>
-          </div>
-          <div id="items">
-            <span class="item-class">Ornnaments</span>
-            <hr />
-            <div id="ornn-items" class="item-icons"></div>
-          </div>
-        </div>
       </div>
       <div id="champion-info-spells" class="info">
         <div id="champion-info">
           <div id="champion-loading">
             <img id="champion-loading" src="" />
-          </div>
-          <div id="champion-level">
-            <span>Level: </span>
-            <select id="champion-level">
-              <option value="n">n</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-              <option value="7">7</option>
-              <option value="8">8</option>
-              <option value="9">9</option>
-              <option value="10">10</option>
-              <option value="11">11</option>
-              <option value="12">12</option>
-              <option value="13">13</option>
-              <option value="14">14</option>
-              <option value="15">15</option>
-              <option value="16">16</option>
-              <option value="17">17</option>
-              <option value="18">18</option>
-            </select>
           </div>
           <div class="champion-name">
             <h2><span id="champion-name"></span></h2>
@@ -100,6 +38,30 @@
           <div id="champion-stats">
             <div id="base-stats-header">
               <p>Base Stats</p>
+              <div id="champion-level">
+                <span>Level: </span>
+                <select id="champion-level">
+                  <option value="n">n</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
+                  <option value="11">11</option>
+                  <option value="12">12</option>
+                  <option value="13">13</option>
+                  <option value="14">14</option>
+                  <option value="15">15</option>
+                  <option value="16">16</option>
+                  <option value="17">17</option>
+                  <option value="18">18</option>
+                </select>
+              </div>
             </div>
             <div id="base-stats">
               <div class="column1">
@@ -199,6 +161,73 @@
             </div>
           </div>
         </div>
+        <div class="item-selector-info">
+          <div id="item-selector">
+            <input type="text" id="searchItems" />
+            <div id="items">
+              <span class="item-class">Starter</span>
+              <hr />
+              <div id="starter-items" class="item-icons"></div>
+            </div>
+            <div id="items">
+              <span class="item-class">Basic</span>
+              <hr />
+              <div id="basic-items" class="item-icons"></div>
+            </div>
+            <div id="items">
+              <span class="item-class">Boots</span>
+              <hr />
+              <div id="boots" class="item-icons"></div>
+            </div>
+            <div id="items">
+              <span class="item-class">Epic</span>
+              <hr />
+              <div id="epic-items" class="item-icons"></div>
+            </div>
+            <div id="items">
+              <span class="item-class">Legendary</span>
+              <hr />
+              <div id="legendary-items" class="item-icons"></div>
+            </div>
+            <div id="items">
+              <span class="item-class">Mythic</span>
+              <hr />
+              <div id="mythic-items" class="item-icons"></div>
+            </div>
+            <div id="items">
+              <span class="item-class">Ornnaments</span>
+              <hr />
+              <div id="ornn-items" class="item-icons"></div>
+            </div>
+          </div>
+        </div>
+        <div id="item-info" class="info-popout">
+          <div id="item-recipe">
+            <div id="main-item"></div>
+            <div id="components"></div>
+          </div>
+          <br />
+          <div id="item-icon-name-cost">
+            <img src="" alt="item-icon" id="item-icon" />
+            <div id="item-name-cost">
+              <span id="item-name">Item Name</span>
+              <div id="item-cost">
+                <img
+                  src="https://raw.communitydragon.org/latest/game/assets/ux/floatingtext/goldicon.png"
+                />
+                <span id="item-cost">Item Cost</span>
+              </div>
+            </div>
+          </div>
+          <br />
+          <div id="item-stats"></div>
+          <br />
+          <div id="item-effects">
+            <div id="active-effects"></div>
+            <div id="passive-effects"></div>
+          </div>
+          <br />
+        </div>
         <div id="champion-spells">
           <h2>
             <p>Abilities</p>
@@ -206,10 +235,13 @@
           <hr />
           <div class="passive">
             <div id="champion-passive1" hidden>
-              <div>
-                <h3>
-                  <p id="passive-name1" class="ability-name"></p>
-                </h3>
+              <div class="spell-header">
+                <div class="spell-name">
+                  <h3>
+                    <p id="passive-name1" class="ability-name"></p>
+                  </h3>
+                </div>
+                <div id="passive-stats1" class="spell-stats"></div>
               </div>
               <div>
                 <div>
@@ -717,33 +749,6 @@
             </div>
           </div>
         </div>
-      </div>
-      <div id="item-info" class="info">
-        <div id="item-recipe">
-          <div id="main-item"></div>
-          <div id="components"></div>
-        </div>
-        <br />
-        <div id="item-icon-name-cost">
-          <img src="" alt="item-icon" id="item-icon" />
-          <div id="item-name-cost">
-            <span id="item-name">Item Name</span>
-            <div id="item-cost">
-              <img
-                src="https://raw.communitydragon.org/latest/game/assets/ux/floatingtext/goldicon.png"
-              />
-              <span id="item-cost">Item Cost</span>
-            </div>
-          </div>
-        </div>
-        <br />
-        <div id="item-stats"></div>
-        <br />
-        <div id="item-effects">
-          <div id="active-effects"></div>
-          <div id="passive-effects"></div>
-        </div>
-        <br />
       </div>
     </main>
     <script src="wiki.js"></script>

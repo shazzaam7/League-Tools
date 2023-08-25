@@ -35,11 +35,9 @@ ChampionItems.addEventListener("change", () => {
         document.querySelector("div#champion-selector-search").style.display = "grid";
         document.querySelector("div#item-info").style.display = "none";
     } else if (ChampionItems.selectedIndex == 2) {
-        grabAllItems();
         document.querySelector("select#champion-level").selectedIndex = 0;
         document.querySelector("div#champion-info-spells").style.display = "none";
         document.querySelector("div#champion-selector-search").style.display = "none";
-        document.querySelector("div#item-selector").style.display = "grid";
     } else {
         document.querySelector("select#champion-level").selectedIndex = 0;
         document.querySelector("div#champion-info-spells").style.display = "none";
