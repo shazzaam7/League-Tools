@@ -34,15 +34,16 @@ document.addEventListener("DOMContentLoaded", () => {
                 // Trying to find secondary rune tree that is the same as currently selected primary rune tree
                 document.querySelectorAll(".secondary-rune-tree-selection > div").forEach(SecondaryRune => {
                     if (RuneSelection.getAttribute("data-rune-tree") == SecondaryRune.getAttribute("data-rune-tree")) {
-                        if (SecondaryRune.className == "selected") {
+                        if (SecondaryRune.classList.contains("selected")) {
                             // Removing runes from Array SelectedSecondaryRunes
                             SelectedSecondaryRunes = ["", ""];
-                            SecondaryRune.className = "";
+                            SecondaryRune.classList.remove("selected");
                             document.querySelectorAll(".secondary-rune-tree > div[id]").forEach((RuneTree) => {
+                                console.log(RuneTree.id);
                                 RuneTree.hidden = true;
                             });
                             document.querySelector("div.mini-runes").style.display = "none";
-                        };
+                        }
                         SecondaryRune.style.display = "none";
                     } else {
                         SecondaryRune.style.display = "flex";
@@ -70,8 +71,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     if (RuneTree.className == "rune-row" || RuneTree.className == "keystone-row") {
                         RuneTree.childNodes.forEach(Rune => {
                             if (Rune.localName == "div") {
-                                if (Rune.className == "selected") {
-                                    Rune.className = "";
+                                if (Rune.classList.contains("selected")) {
+                                    Rune.classList.remove("selected");
                                 }
                             }
                         })
@@ -142,8 +143,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     if (RuneTree.className == "rune-row") {
                         RuneTree.childNodes.forEach(Rune => {
                             if (Rune.localName == "div") {
-                                if (Rune.className == "selected") {
-                                    Rune.className = "";
+                                if (Rune.classList.contains("selected")) {
+                                    Rune.classList.add("selected");
                                 }
                             }
                         })
@@ -166,12 +167,18 @@ document.addEventListener("DOMContentLoaded", () => {
                     SelectedSecondaryRunes[0] = event.target.alt;
                 }
                 else if (SelectedSecondaryRunes[0] != "" && SelectedSecondaryRunes[1] == "") {
-                    SelectedSecondaryRunes[1] = event.target.alt;
+                    if (document.querySelector(`div.secondary-rune-tree > div[id] > div[id] > div >img[alt="${SelectedSecondaryRunes[0]}"]`).parentElement.parentElement == event.target.parentElement.parentElement) {
+                        SelectedSecondaryRunes[0] = event.target.alt;
+                    }
+                    else {
+                        SelectedSecondaryRunes[1] = event.target.alt;
+                    }
                 }
                 else {
-                    if (document.querySelector(`img[alt="${SelectedSecondaryRunes[0]}"]`).parentElement.parentElement == row) {
-                        let temp = SelectedSecondaryRunes[1];
-                        SelectedSecondaryRunes[0] = temp;
+                    if (document.querySelector(`div.secondary-rune-tree > div[id] > div[id] > div >img[alt="${SelectedSecondaryRunes[0]}"]`).parentElement.parentElement == row && document.querySelector(`div.secondary-rune-tree > div[id] > div[id] > div >img[alt="${SelectedSecondaryRunes[1]}"]`).parentElement.parentElement != row) {
+                        SelectedSecondaryRunes[0] = event.target.alt;
+                    }
+                    else if (document.querySelector(`div.secondary-rune-tree > div[id] > div[id] > div >img[alt="${SelectedSecondaryRunes[0]}"]`).parentElement.parentElement != row && document.querySelector(`div.secondary-rune-tree > div[id] > div[id] > div >img[alt="${SelectedSecondaryRunes[1]}"]`).parentElement.parentElement == row) {
                         SelectedSecondaryRunes[1] = event.target.alt;
                     }
                     else {
@@ -183,7 +190,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         let temp = SelectedSecondaryRunes[1];
                         SelectedSecondaryRunes[0] = temp;
                         SelectedSecondaryRunes[1] = event.target.alt;
-                    };
+                    }
                 };
                 // Remove the "selected" class from all runes in the row
                 row.querySelectorAll('div').forEach(runeImg => {
@@ -242,8 +249,8 @@ document.addEventListener("DOMContentLoaded", () => {
             RuneTree.childNodes.forEach(RuneTreeRow => {
                 if (RuneTreeRow.localName == "div") {
                     RuneTreeRow.childNodes.forEach(Rune => {
-                        if (Rune.localName == "div" && Rune.className == "selected") {
-                            Rune.className = "";
+                        if (Rune.localName == "div" && Rune.classList.contains("selected")) {
+                            Rune.classList.remove("selected");
                         }
                     })
                 }
@@ -255,8 +262,8 @@ document.addEventListener("DOMContentLoaded", () => {
             RuneTree.childNodes.forEach(RuneTreeRow => {
                 if (RuneTreeRow.localName == "div") {
                     RuneTreeRow.childNodes.forEach(Rune => {
-                        if (Rune.localName == "div" && Rune.className == "selected") {
-                            Rune.className = "";
+                        if (Rune.localName == "div" && Rune.classList.contains("selected")) {
+                            Rune.classList.remove("selected");
                         }
                     })
                 }
@@ -266,10 +273,101 @@ document.addEventListener("DOMContentLoaded", () => {
         // Unselecting Mini Runes
         document.querySelectorAll('.mini-runes > div').forEach(MiniRuneRow => {
             MiniRuneRow.childNodes.forEach(MiniRune => {
-                if (MiniRune.localName == "div" && MiniRune.className == "selected") {
-                    MiniRune.className = "";
+                if (MiniRune.localName == "div" && MiniRune.classList.contains("selected")) {
+                    MiniRune.classList.remove("selected");
                 }
             })
         })
     })
 });
+
+/**
+ * FillRuneTooltips function
+ * Used to fill Rune tooltips with info about them
+ */
+function fillRuneTooltips() {
+    fetch(`https://ddragon.leagueoflegends.com/cdn/${latestVersion}/data/en_US/runesReforged.json`)
+        .then(res => res.json())
+        .then(data => {
+            data.forEach(Tree => {
+                for (let index = 0; index < Tree.slots.length; index++) {
+                    if (index == 0) {
+                        Tree.slots[index].runes.forEach(Keystone => {
+                            document.querySelector(`img[alt=${Keystone.key}]`).parentElement.setAttribute("data-tooltip", formatRunesTooltips(Keystone));
+                        })
+                    }
+                    else {
+                        Tree.slots[index].runes.forEach(Rune => {
+                            //document.querySelector(`img[alt=${Rune.key}]`).parentElement.setAttribute("data-tooltip", Rune.longDesc);
+                            document.querySelectorAll(`img[alt=${Rune.key}]`).forEach(rune => {
+                                rune.parentElement.setAttribute("data-tooltip", formatRunesTooltips(Rune));
+                            })
+                        })
+                    }
+                }
+            })
+        })
+        .catch(error => console.log(error));
+}
+
+function formatRunesTooltips(RuneInfo) {
+    /**
+     * Precision
+     */
+    // <br><br> to /n
+    RuneInfo.longDesc = RuneInfo.longDesc.replace(/<br><br>/g, '\n');
+    // <hr><br> ignore
+    RuneInfo.longDesc = RuneInfo.longDesc.replace(/<hr><br>/g, '');
+    // <hr> ignore
+    RuneInfo.longDesc = RuneInfo.longDesc.replace(/<hr>/g, '');
+    // <br> to /n
+    RuneInfo.longDesc = RuneInfo.longDesc.replace(/<br>/g, '\n');
+    // <i>text</i> to text
+    RuneInfo.longDesc = RuneInfo.longDesc.replace(/<i>(.*?)<\/i>/g, '$1');
+    // <li>text</li> to text
+    RuneInfo.longDesc = RuneInfo.longDesc.replace(/<li>(.*?)<\/li>/g, '\n$1');
+    // <gold>text</gold> to text
+    RuneInfo.longDesc = RuneInfo.longDesc.replace(/<gold>(.*?)<\/gold>/g, '$1');
+    // <attention>text</attention> to text
+    RuneInfo.longDesc = RuneInfo.longDesc.replace(/<attention>(.*?)<\/attention>/g, '$1');
+    // <speed>text</speed> to text
+    RuneInfo.longDesc = RuneInfo.longDesc.replace(/<speed>(.*?)<\/speed>/g, '$1');
+    // <truedamage>text</truedamage> to text
+    RuneInfo.longDesc = RuneInfo.longDesc.replace(/<truedamage>(.*?)<\/truedamage>/g, '$1');
+    // <scaleLevel>text</scaleLevel> to text
+    RuneInfo.longDesc = RuneInfo.longDesc.replace(/<scaleLevel>(.*?)<\/scaleLevel>/g, '$1');
+    // <scalehealth>text</scalehealth> to text
+    RuneInfo.longDesc = RuneInfo.longDesc.replace(/<scalehealth>(.*?)<\/scalehealth>/g, '$1');
+    // <scaleMana>text</scaleMana> to text
+    RuneInfo.longDesc = RuneInfo.longDesc.replace(/<scaleMana>(.*?)<\/scaleMana>/g, '$1');
+    // Press The Attack formatting
+    RuneInfo.longDesc = RuneInfo.longDesc.replace(/<lol-uikit-tooltipped-keyword[^>]*>(.*?)<\/lol-uikit-tooltipped-keyword>/g, '$1');
+    // Fleet Footwork formatting
+    RuneInfo.longDesc = RuneInfo.longDesc.replace(/<speed>(\d+(\.\d+)?)% Move Speed<\/speed>/g, '$1% Movement Speed');
+    // Triumph formatting
+    //RuneInfo.longDesc = RuneInfo.longDesc.replace(/<i>'The most dangerous game brings the greatest glory.' —Noxian Reckoner<\/i>/, "'The most dangerous game brings the greatest glory.' - Noxian Reckoner");
+    RuneInfo.longDesc = RuneInfo.longDesc.replace(/<i>'(.*?)'\s*—(.*?)<\/i>/, '$1 - $2');
+    // Presence of Mind formatting
+    RuneInfo.longDesc = RuneInfo.longDesc.replace(/@RegenAmount@ \(80% for ranged\)/g, "1.5 − 11 (Melee) /  1.2 − 8.8 (Ranged) (based on level)");
+    // Legend Runes formatting
+    RuneInfo.longDesc = RuneInfo.longDesc.replace(/<statGood>(.*?)<\/statGood>/g, 'max 10 stacks');
+    RuneInfo.longDesc = RuneInfo.longDesc.replace(/<scaleAD>(.*?)<\/scaleAD>/g, '$1');
+    RuneInfo.longDesc = RuneInfo.longDesc.replace(/<scaleHealth>(.*?)<\/scaleHealth>/g, '$1');
+    // Cut Down formatting
+    RuneInfo.longDesc = RuneInfo.longDesc.replace(/<rules>(.*?)<\/rules>/s, '$1');
+
+    /**
+     * Domination
+     */
+    // Electrocute formatting
+    RuneInfo.longDesc = RuneInfo.longDesc.replace(/<b>(.*?)<\/b>/g, '$1');
+    RuneInfo.longDesc = RuneInfo.longDesc.replace(/<i>'(.*?)'<\/i>/g, '$1');
+    // Predator formatting
+    RuneInfo.longDesc = RuneInfo.longDesc.replace(/'<font color='#c60300'>Predator<\/font>\.'/g, 'Predator.');
+    RuneInfo.longDesc = RuneInfo.longDesc.replace(/<scaleAP>(.*?)<\/scaleAP>/g, '$1');
+    // Zombie Ward
+    RuneInfo.longDesc = RuneInfo.longDesc.replace(/<font color='#48C4B7'>(.*?)<\/font>/, '$1');
+    // Eyeball Collection
+    RuneInfo.longDesc = RuneInfo.longDesc.replace(/<font color='#48C4B7'>(.*?)<\/font>/, '$1');
+    return `${RuneInfo.name}\n\n ${RuneInfo.longDesc}`;
+}

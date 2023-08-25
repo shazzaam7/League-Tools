@@ -38,13 +38,14 @@ div.loading-circle {
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
 }
 
 /*Paragraph inside of Loading*/
-div#loading > p {
+div#loading>p {
   color: #fff;
   font-size: 20px;
   margin-top: 20px;
@@ -62,7 +63,7 @@ div#header {
   justify-content: center;
 }
 
-div#header > p {
+div#header>p {
   color: rgb(231, 222, 222);
   margin: 10px 0px 0px 0px;
 }
@@ -184,7 +185,7 @@ div.champion-details-body {
 div.runes {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-around;
   color: whitesmoke;
 }
 
@@ -206,20 +207,20 @@ div.secondary-tree {
   margin: 0.5rem 1.2rem 0rem 2rem;
 }
 
-div.primary-rune-tree-selection > div,
-div.secondary-rune-tree-selection > div {
+div.primary-rune-tree-selection>div,
+div.secondary-rune-tree-selection>div {
   padding: 8px;
   filter: grayscale(100%);
   display: flex;
 }
 
-div.primary-rune-tree-selection > div > img,
-div.secondary-rune-tree-selection > div > img {
+div.primary-rune-tree-selection>div>img,
+div.secondary-rune-tree-selection>div>img {
   align-self: center;
 }
 
-div.primary-rune-tree-selection > div.selected,
-div.secondary-rune-tree-selection > div.selected {
+div.primary-rune-tree-selection>div.selected,
+div.secondary-rune-tree-selection>div.selected {
   filter: grayscale(0%);
   padding: 8px;
   display: flex;
@@ -244,18 +245,18 @@ div.keystone-row {
   justify-content: center;
 }
 
-div.keystone-row > div {
+div.keystone-row>div {
   display: flex;
   margin-left: 0.4rem;
   margin-right: 0.4rem;
   filter: grayscale(100%);
 }
 
-div.keystone-row > div.selected {
+div.keystone-row>div.selected {
   filter: grayscale(0%);
 }
 
-div.keystone-row > div > img {
+div.keystone-row>div>img {
   align-self: center;
   max-width: 52px;
   max-height: 52px;
@@ -268,18 +269,18 @@ div.rune-row {
   margin-top: 0.7rem;
 }
 
-div.rune-row > div {
+div.rune-row>div {
   display: flex;
   margin-left: 0.6rem;
   margin-right: 0.6rem;
   filter: grayscale(100%);
 }
 
-div.rune-row > div.selected {
+div.rune-row>div.selected {
   filter: grayscale(0%);
 }
 
-div.rune-row > div > img {
+div.rune-row>div>img {
   align-self: center;
   max-width: 44px;
   max-height: 44px;
@@ -298,7 +299,7 @@ div.mini-rune-row {
   display: flex;
 }
 
-div.mini-rune-row > div {
+div.mini-rune-row>div {
   border: 2px solid gold;
   border-radius: 20px;
   display: flex;
@@ -306,8 +307,44 @@ div.mini-rune-row > div {
   filter: grayscale(100%);
 }
 
-div.mini-rune-row > div.selected {
+div.mini-rune-row>div.selected {
   filter: grayscale(0%);
+}
+
+/*Tooltip - Shows info about Runes*/
+div.tooltip::before,
+div.tooltip::after {
+  --scale: 0;
+  --arrow-size: 10px;
+  --tooltip-color: #111111;
+  border: 2px solid gold;
+  position: absolute;
+  top: -.25rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(-100%) scale(var(--scale));
+  transition: 200ms transform;
+  transition-delay: 200ms;
+  transform-origin: bottom center;
+  /*Passing Data*/
+}
+
+div.tooltip::before {
+  content: attr(data-tooltip);
+  white-space: pre-line;
+  /* Preserve line breaks */
+  color: whitesmoke;
+  padding: .5rem;
+  border-radius: .3rem;
+  width: max-content;
+  max-width: 800%;
+  background: var(--tooltip-color);
+  overflow-wrap: break-word;
+  z-index: 1;
+}
+
+div.tooltip:hover::before {
+  --scale: 1;
+  z-index: 9999;
 }
 
 /*Clear Runes Button*/
